@@ -62,11 +62,14 @@
      <Compile Include="Assets\DOTween\Modules\DOTweenModuleUI.cs" />
      <Compile Include="Assets\DOTween\Modules\DOTweenModuleUnityVersion.cs" />
      <Compile Include="Assets\DOTween\Modules\DOTweenModuleUtils.cs" />
+     <Compile Include="Assets\Scripts\ActionManager.cs" />
      <Compile Include="Assets\Scripts\CameraMovement.cs" />
+     <Compile Include="Assets\Scripts\CellSpriteManager.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\MainMenu.cs" />
      <Compile Include="Assets\Scripts\ManagersSingleton.cs" />
-     <Compile Include="Assets\Scripts\PixleReader.cs" />
+     <Compile Include="Assets\Scripts\MarkCellAsMananger.cs" />
+     <Compile Include="Assets\Scripts\PuzzlePageManager.cs" />
      <Compile Include="Assets\Scripts\PuzzlesEditor.cs" />
      <Compile Include="Assets\Scripts\PuzzlesScriptableObject.cs" />
      <Compile Include="Assets\Scripts\TouchDetector.cs" />

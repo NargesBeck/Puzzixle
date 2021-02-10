@@ -8,7 +8,7 @@ public class CameraMovement : MonoBehaviour
 
     public enum Pages
     {
-        MainMenu, Puzzle5, Puzzle10, Puzzle15
+        MainMenu, Puzzle
     }
 
     public Pages CurrentPage;
@@ -24,7 +24,7 @@ public class CameraMovement : MonoBehaviour
     private void GoHere(Vector3 destination)
     {
         ZoomInOut();
-        transform.DOMove(destination, 5, false).OnComplete(ZoomInOut);
+        transform.DOMove(destination, 1, false).OnComplete(ZoomInOut);
     }
 
     public void GoToAnotherPage(Pages newPage)
@@ -42,7 +42,7 @@ public class CameraMovement : MonoBehaviour
                 output = pinMain.position;
                 break;
 
-            case Pages.Puzzle5:
+            case Pages.Puzzle:
                 output = pin5x5.position;
                 break;
         }

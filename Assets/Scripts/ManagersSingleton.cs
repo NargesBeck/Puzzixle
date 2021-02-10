@@ -21,6 +21,8 @@ public class ManagersSingleton : MonoBehaviour
     public Camera Camera;
     public MainMenu MainMenu;
     public GameManager GameManager;
+    public ActionManager ActionManager;
     public TouchDetector TouchDetector;
     public CameraMovement CameraMovement;
+    public PuzzlePageManager PuzzlePageManager;
 }

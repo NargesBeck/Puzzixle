@@ -6,15 +6,15 @@ public class MainMenu : MonoBehaviour
     [SerializeField]
     private Transform PlayButton;
 
-    void Start()
+    public void Click()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Debug.Log("main menu >> click");
+        switch (name)
+        {
+            case "PlayButton":
+                Play();
+                break;
+        }
     }
 
     public void SetUpMainMenu()
@@ -22,8 +22,9 @@ public class MainMenu : MonoBehaviour
         PlayButton.DOScale(0.55f, 0.25f).OnComplete(() => PlayButton.DOScale(0.5f, 1));
     }
 
-    public void Play()
+    private void Play()
     {
-        ManagersSingleton.Managers.CameraMovement.GoToAnotherPage(CameraMovement.Pages.Puzzle5);
+        Debug.Log("main menu >> click >> play");
+        ManagersSingleton.Managers.CameraMovement.GoToAnotherPage(CameraMovement.Pages.Puzzle);
     }
 }
