@@ -16,7 +16,7 @@ public class PuzzlesEditor : EditorWindow
 
     //private GameManager.PuzzleSizes PuzzSize;
 
-    [MenuItem("Puzzixle/PuzzlesEditor &P")]
+    [MenuItem("Puzzixle/PuzzlesEditor &Z")]
     public static void ShowWindow()
     {
         var objectDB = Resources.Load<PuzzlesScriptableObject>("Puzzles");
@@ -96,7 +96,17 @@ public class PuzzlesEditor : EditorWindow
         GUI.color = Color.blue;
         if (GUILayout.Button("Delete"))
         {
+            if (CurrentPuzzle != null)
+            {
+                Pool.PuzzlesList.Remove(CurrentPuzzle);
+                CurrentPuzzle = null;
 
+                EditorGUI.EndDisabledGroup();
+                EditorGUILayout.EndVertical();
+                GUILayout.EndArea();
+
+                return;
+            }
         }
 
         if (GUILayout.Button("Generate"))
