@@ -26,7 +26,7 @@ public class MarkCellAsMananger : MonoBehaviour
     [SerializeField]
     Sprite Empty, Full;
 
-    public CellModes Mark;
+    public CellModes Mark = CellModes.MarkedAsEmpty;
 
     public void Click()
     {

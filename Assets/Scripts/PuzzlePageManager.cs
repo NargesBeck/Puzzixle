@@ -17,5 +17,10 @@ public class PuzzlePageManager : MonoBehaviour
         }
     }
 
-    
+    public void StartLevel(PuzzleInfo puzzleInfo)
+    {
+        // instantiate
+        // assign board to managers singleton
+
+    }
 }
