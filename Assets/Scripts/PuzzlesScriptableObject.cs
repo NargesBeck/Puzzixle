@@ -1,6 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections.Generic;
+
+public enum CellModes
+{
+    NA, MarkedAsEmpty, MarkedAsFull
+}
+
+public enum Boards
+{
+    Squ5, Squ10, Squ15
+}
 
 [CreateAssetMenu(fileName = "Puzzles", menuName = "Puzzles", order = 0)]
 public class PuzzlesScriptableObject : ScriptableObject
@@ -17,8 +27,18 @@ public class PuzzlesPool
 [Serializable]
 public class PuzzleInfo
 {
-    public int Size = 10;
-    public bool[,] Map;
+    public Cell[,] Map;
     public string LevelName;
     public Texture2D Result;
+    public Boards Board = Boards.Squ10;
+}
+
+[Serializable]
+public class Cell
+{
+    public Cell()
+    {
+        CellMode = CellModes.NA;
+    }
+    public CellModes CellMode;
 }

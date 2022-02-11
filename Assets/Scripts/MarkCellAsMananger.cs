@@ -1,8 +1,11 @@
 ﻿using DG.Tweening;
 using UnityEngine;
+using System.Collections;
 
 public class MarkCellAsMananger : MonoBehaviour
 {
+    private const float DOTweenDuration = 0.25f;
+
     SpriteRenderer spriteRenderer;
     private SpriteRenderer SpriteRenderer
     {
@@ -23,28 +26,34 @@ public class MarkCellAsMananger : MonoBehaviour
     [SerializeField]
     Sprite Empty, Full;
 
-    public enum Mark
-    {
-        Empty, Full
-    }
-    public Mark mark = Mark.Empty;
+    public CellModes Mark;
 
     public void Click()
     {
-        Debug.Log("here");
-        if (SpriteRenderer.sprite.name == "MarkAsEmpty")
+        ManagersSingleton.Managers.TouchDetector.TouchDetectionEnabled = false;
+        StartCoroutine(UnlockTouchAfterClickWithDelay());
+
+        if (SpriteRenderer.sprite == Empty)
         {
-            mark = Mark.Full;
+            Debug.Log("MarkCellAsMananger >> == Empty");
+            Mark = CellModes.MarkedAsFull;
             SpriteRenderer.DOFade(0, 0);
             SpriteRenderer.sprite = Full;
-            SpriteRenderer.DOFade(1, 0.25f);
+            SpriteRenderer.DOFade(1, DOTweenDuration);
         }
         else
         {
-            mark = Mark.Empty;
+            Debug.Log("MarkCellAsMananger >> == Full");
+            Mark = CellModes.MarkedAsEmpty;
             SpriteRenderer.DOFade(0, 0);
             SpriteRenderer.sprite = Empty;
-            SpriteRenderer.DOFade(1, 0.25f);
+            SpriteRenderer.DOFade(1, DOTweenDuration);
         }
+    }
+
+    private IEnumerator UnlockTouchAfterClickWithDelay()
+    {
+        yield return new WaitForSeconds(DOTweenDuration);
+        ManagersSingleton.Managers.TouchDetector.TouchDetectionEnabled = true;
     }
 }

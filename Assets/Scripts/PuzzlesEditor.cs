@@ -111,29 +111,30 @@ public class PuzzlesEditor : EditorWindow
 
         if (GUILayout.Button("Generate"))
         {
-            if (CurrentPuzzle.Map == null && CurrentPuzzle.Size != 0)
+            if (CurrentPuzzle.Map == null)
             {
-                CurrentPuzzle.Map = new bool[CurrentPuzzle.Size, CurrentPuzzle.Size];
+                CurrentPuzzle.Map = new Cell[GetBoardSizeFromBoardEnum(CurrentPuzzle.Board), GetBoardSizeFromBoardEnum(CurrentPuzzle.Board)];
             }
 
-            CurrentPuzzle.Map = ManagersSingleton.Managers.PuzzleGenerator.Generate(CurrentPuzzle.Size);
+            ManagersSingleton.Managers.PuzzleGenerator.Generate(ref CurrentPuzzle, GetBoardSizeFromBoardEnum(CurrentPuzzle.Board));
         }
 
         GUI.color = Color.white;
         GUILayout.Space(20);
         CurrentPuzzle.LevelName = EditorGUILayout.TextField("Level Name: ", CurrentPuzzle.LevelName);
         GUILayout.Space(20);
-        CurrentPuzzle.Size = EditorGUILayout.IntField("Size: ", CurrentPuzzle.Size);
+        CurrentPuzzle.Board = (Boards)EditorGUILayout.EnumPopup(CurrentPuzzle.Board);
+
         GUILayout.Space(30);
 
-        switch (CurrentPuzzle.Size)
+        switch (CurrentPuzzle.Board)
         {
-            case 5:
+            case Boards.Squ5:
                 break;
-            case 10:
-                Draw10x10(ref CurrentPuzzle.Map);
+            case Boards.Squ10:
+                Draw10x10();
                 break;
-            case 15:
+            case Boards.Squ15:
                 break;
         }
 
@@ -142,21 +143,28 @@ public class PuzzlesEditor : EditorWindow
         GUILayout.EndArea();
     }
 
-    private void Draw10x10(ref bool[,] puzzle)
+    private void Draw10x10()
     {
         int cellWidth = 25;
         int cellHeight = 20;
-        if (puzzle == null)
-            puzzle = new bool[10, 10];
+        if (CurrentPuzzle.Map == null)
+            CurrentPuzzle.Map = new Cell[GetBoardSizeFromBoardEnum(CurrentPuzzle.Board), GetBoardSizeFromBoardEnum(CurrentPuzzle.Board)];
 
         for (int row = 0; row < 10; row++)
         {
             GUILayout.BeginHorizontal("box");
             for (int col = 0; col < 10; col++)
             {
-                if (puzzle[row, col])
+                if (CurrentPuzzle.Map[row, col] == null)
+                    CurrentPuzzle.Map[row, col] = new Cell();
+
+                if (CurrentPuzzle.Map[row, col].CellMode == CellModes.MarkedAsFull)
                 {
                     GUI.color = Color.cyan;
+                }
+                else if (CurrentPuzzle.Map[row, col].CellMode == CellModes.NA)
+                {
+                    GUI.color = Color.black;
                 }
                 else
                 {
@@ -165,7 +173,11 @@ public class PuzzlesEditor : EditorWindow
 
                 if (GUILayout.Button("", GUILayout.MaxHeight(cellHeight), GUILayout.MaxWidth(cellWidth)))
                 {
-                    puzzle[row, col] = !puzzle[row, col];
+                    if (CurrentPuzzle.Map[row, col].CellMode == CellModes.MarkedAsFull)
+                        CurrentPuzzle.Map[row, col].CellMode = CellModes.MarkedAsEmpty;
+
+                    if (CurrentPuzzle.Map[row, col].CellMode == CellModes.MarkedAsEmpty)
+                        CurrentPuzzle.Map[row, col].CellMode = CellModes.MarkedAsFull;
                 }
             }
             GUILayout.EndHorizontal();
@@ -180,6 +192,21 @@ public class PuzzlesEditor : EditorWindow
             Pool = puzzlesPool.PuzzlesPool;
         }
         EditorUtility.SetDirty(puzzlesPool);
+    }
+
+    private int GetBoardSizeFromBoardEnum(Boards board)
+    {
+        switch (board)
+        {
+            case Boards.Squ5:
+                return 5;
+            case Boards.Squ10:
+                return 10;
+            case Boards.Squ15:
+                return 15;
+            default:
+                return 10;
+        }
     }
 
     //private void LoadMapsFromFile()

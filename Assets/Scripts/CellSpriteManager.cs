@@ -20,25 +20,21 @@ public class CellSpriteManager : MonoBehaviour
         }
     }
 
-    enum Modes
-    {
-        Default, Full, Empty 
-    }
-    Modes mode = Modes.Default;
+    CellModes MyMode;
 
     public void Click()
     {
-        if (mode != Modes.Default)
+        if (MyMode != CellModes.NA)
             return;
-        if (ManagersSingleton.Managers.PuzzlePageManager.MarkCellAsMananger.mark == MarkCellAsMananger.Mark.Empty)
+        if (ManagersSingleton.Managers.PuzzlePageManager.MarkCellAsMananger.Mark == CellModes.MarkedAsEmpty)
         {
             SpriteRenderer.sprite = ManagersSingleton.Managers.PuzzlePageManager.EmptyCellSprite;
-            mode = Modes.Empty;
+            MyMode = CellModes.MarkedAsEmpty;
         }
         else
         {
             SpriteRenderer.DOFade(0, 0.5f);
-            mode = Modes.Full;
+            MyMode = CellModes.MarkedAsFull;
         }
     }
 

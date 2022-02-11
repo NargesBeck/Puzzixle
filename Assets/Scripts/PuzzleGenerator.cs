@@ -4,20 +4,25 @@ using UnityEngine;
 
 public class PuzzleGenerator : MonoBehaviour
 {
-    public bool[,] Generate(int size)
+    public void Generate(ref PuzzleInfo puzzle, int size)
     {
-        bool[,] arr = new bool[size, size];
-
         for (int row = 0; row < size; row++)
         {
-            bool[] rowValues = AssignRowWithRandoms(size);
+            bool[] rowBoolValues = AssignRowWithRandoms(size);
             for (int col = 0; col < size; col++)
             {
-                arr[row, col] = rowValues[col];
+                if (puzzle.Map[row, col] == null)
+                    puzzle.Map[row, col] = new Cell();
+                if (rowBoolValues[col])
+                {
+                    puzzle.Map[row, col].CellMode = CellModes.MarkedAsFull;
+                }
+                else
+                {
+                    puzzle.Map[row, col].CellMode = CellModes.MarkedAsEmpty;
+                }
             }
         }
-
-        return arr;
     }
 
     private bool RandomBool ()

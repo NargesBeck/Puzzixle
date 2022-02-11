@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class TouchDetector : MonoBehaviour
 {
+    public bool TouchDetectionEnabled = true;
     void Update()
     {
+        if (!TouchDetectionEnabled)
+            return;
+
         if (Input.GetMouseButtonUp(0))
         {
             Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);

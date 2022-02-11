@@ -11,7 +11,7 @@ public class ActionManager : MonoBehaviour
 
         MainMenu mainMenu = clicked.GetComponent <MainMenu>();
         mainMenu?.Click();
-        if (cellSpriteManager != null)
+        if (mainMenu != null)
             return;
 
         MarkCellAsMananger markCell = clicked.GetComponent<MarkCellAsMananger>();
