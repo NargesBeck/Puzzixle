@@ -5,9 +5,9 @@ using UnityEngine;
 public class PuzzlesDBManager : MonoBehaviour
 {
     [SerializeField]
-    private PuzzlesPool puzzlesPool;
+    private List<PuzzlesPoolForOneBoard> puzzlesPool;
 
-    private PuzzlesPool PuzzlesPool
+    private List<PuzzlesPoolForOneBoard> PuzzlesPool
     {
         get
         {
@@ -20,10 +20,10 @@ public class PuzzlesDBManager : MonoBehaviour
         }
     }
 
-    //private PuzzleInfo FetchNewPuzzle(BoardTypes boardType)
-    //{
-    //    int puzzleIndex = ManagersSingleton.Managers.Profile.GetLastPuzzlePlayedForThisBoard(boardType) + 1;
+    private PuzzleInfo FetchNewPuzzle(BoardTypes boardType)
+    {
+        int puzzleIndex = ManagersSingleton.Managers.Profile.GetLastPuzzlePlayedForThisBoard(boardType) + 1;
 
-    //    if (puzzleIndex < )
+        return null;
     }
 }

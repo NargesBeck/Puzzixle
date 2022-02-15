@@ -12,7 +12,7 @@ public class PuzzlesEditor : EditorWindow
     PuzzleInfo CurrentPuzzle;
 
     [SerializeField]
-    public static PuzzlesPool Pool = new PuzzlesPool();
+    public static PuzzlesPoolForOneBoard Pool = new PuzzlesPoolForOneBoard();
 
     //private GameManager.PuzzleSizes PuzzSize;
 
@@ -22,7 +22,7 @@ public class PuzzlesEditor : EditorWindow
         var objectDB = Resources.Load<PuzzlesScriptableObject>("Puzzles");
         if (objectDB != null)
         {
-            Pool = objectDB.PuzzlesPool;
+            Pool = objectDB.PuzzlesPool[0];
         }
 
         PuzzlesEditor PuzzlesWindow = (PuzzlesEditor)EditorWindow.GetWindow(typeof(PuzzlesEditor));
@@ -113,21 +113,21 @@ public class PuzzlesEditor : EditorWindow
         {
             if (CurrentPuzzle.Map == null)
             {
-                CurrentPuzzle.Map = new Cell[GetBoardSizeFromBoardEnum(CurrentPuzzle.BoardType), GetBoardSizeFromBoardEnum(CurrentPuzzle.BoardType)];
+                CurrentPuzzle.Map = new Cell[GetBoardSizeFromBoardEnum(CurrentPuzzle.MyPool.BoardType), GetBoardSizeFromBoardEnum(CurrentPuzzle.MyPool.BoardType)];
             }
 
-            ManagersSingleton.Managers.PuzzleGenerator.Generate(ref CurrentPuzzle, GetBoardSizeFromBoardEnum(CurrentPuzzle.BoardType));
+            ManagersSingleton.Managers.PuzzleGenerator.Generate(ref CurrentPuzzle, GetBoardSizeFromBoardEnum(CurrentPuzzle.MyPool.BoardType));
         }
 
         GUI.color = Color.white;
         GUILayout.Space(20);
         CurrentPuzzle.LevelName = EditorGUILayout.TextField("Level Name: ", CurrentPuzzle.LevelName);
         GUILayout.Space(20);
-        CurrentPuzzle.BoardType = (BoardTypes)EditorGUILayout.EnumPopup(CurrentPuzzle.BoardType);
+        CurrentPuzzle.MyPool.BoardType = (BoardTypes)EditorGUILayout.EnumPopup(CurrentPuzzle.MyPool.BoardType);
 
         GUILayout.Space(30);
 
-        switch (CurrentPuzzle.BoardType)
+        switch (CurrentPuzzle.MyPool.BoardType)
         {
             case BoardTypes.Squ5:
                 break;
@@ -148,7 +148,7 @@ public class PuzzlesEditor : EditorWindow
         int cellWidth = 25;
         int cellHeight = 20;
         if (CurrentPuzzle.Map == null)
-            CurrentPuzzle.Map = new Cell[GetBoardSizeFromBoardEnum(CurrentPuzzle.BoardType), GetBoardSizeFromBoardEnum(CurrentPuzzle.BoardType)];
+            CurrentPuzzle.Map = new Cell[GetBoardSizeFromBoardEnum(CurrentPuzzle.MyPool.BoardType), GetBoardSizeFromBoardEnum(CurrentPuzzle.MyPool.BoardType)];
 
         for (int row = 0; row < 10; row++)
         {
@@ -189,7 +189,7 @@ public class PuzzlesEditor : EditorWindow
         var puzzlesPool = Resources.Load<PuzzlesScriptableObject>("Rooms");
         if (puzzlesPool != null)
         {
-            Pool = puzzlesPool.PuzzlesPool;
+            Pool = puzzlesPool.PuzzlesPool[0];
         }
         EditorUtility.SetDirty(puzzlesPool);
     }

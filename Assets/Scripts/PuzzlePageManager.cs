@@ -54,11 +54,11 @@ public class PuzzlePageManager : Page
         if (!IsBoardInstantiatingNeeded(nextPuzzleInfo))
             return CurrentBoard;
 
-        return Instantiate(Resources.Load(GetPrefabPath(CurrentBoard.CurrentPuzzle.BoardType), typeof(GameObject))) as Board;
+        return Instantiate(Resources.Load(GetPrefabPath(CurrentBoard.CurrentPuzzle.MyPool.BoardType), typeof(GameObject))) as Board;
     }
 
     private bool IsBoardInstantiatingNeeded(PuzzleInfo nextPuzzleInfo)
     {
-        return CurrentBoard.CurrentPuzzle.BoardType != nextPuzzleInfo.BoardType;
+        return CurrentBoard.CurrentPuzzle.MyPool.BoardType != nextPuzzleInfo.MyPool.BoardType;
     }
 }

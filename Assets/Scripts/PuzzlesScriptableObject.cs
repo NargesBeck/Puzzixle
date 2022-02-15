@@ -15,12 +15,13 @@ public enum BoardTypes
 [CreateAssetMenu(fileName = "Puzzles", menuName = "Puzzles", order = 0)]
 public class PuzzlesScriptableObject : ScriptableObject
 {
-    public PuzzlesPool PuzzlesPool = new PuzzlesPool();
+    public List<PuzzlesPoolForOneBoard> PuzzlesPool = new List<PuzzlesPoolForOneBoard>();
 }
 
 [Serializable]
-public class PuzzlesPool
+public class PuzzlesPoolForOneBoard
 {
+    public BoardTypes BoardType = BoardTypes.Squ10;
     public List<PuzzleInfo> PuzzlesList = new List<PuzzleInfo>();
 }
 
@@ -30,7 +31,7 @@ public class PuzzleInfo
     public Cell[,] Map;
     public string LevelName;
     public Texture2D Result;
-    public BoardTypes BoardType = BoardTypes.Squ10;
+    public PuzzlesPoolForOneBoard MyPool;
 }
 
 [Serializable]
