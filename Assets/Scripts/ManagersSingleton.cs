@@ -19,6 +19,7 @@ public class ManagersSingleton : MonoBehaviour
     }
 
     public Camera Camera;
+    public Profile Profile;
     public MainMenu MainMenu;
     public GameManager GameManager;
     public ActionManager ActionManager;
@@ -26,5 +27,4 @@ public class ManagersSingleton : MonoBehaviour
     public CameraMovement CameraMovement;
     public PuzzleGenerator PuzzleGenerator;
     public PuzzlePageManager PuzzlePageManager;
-    public Board CurrentBoard;
 }

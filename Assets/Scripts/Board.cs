@@ -10,10 +10,11 @@ public class Board : MonoBehaviour
     [SerializeField]
     List<CellSpriteManager> CellsList = new List<CellSpriteManager>();
 
-    PuzzleInfo CurrentPuzzle;
+    public PuzzleInfo CurrentPuzzle;
 
-    public void RunLevel(PuzzleInfo level)
+    public void RunLevel(PuzzleInfo puzzleToApply)
     {
+        CurrentPuzzle = puzzleToApply;
         List<string> calculatedRowsInfo = SequencesInRowsToString();
         for (int i = 0; i < RowsInfo.Count; i++)
         {
@@ -45,5 +46,4 @@ public class Board : MonoBehaviour
         return output;
     }
 
-    
 }

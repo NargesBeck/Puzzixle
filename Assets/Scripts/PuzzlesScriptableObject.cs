@@ -7,7 +7,7 @@ public enum CellModes
     NA, MarkedAsEmpty, MarkedAsFull
 }
 
-public enum Boards
+public enum BoardTypes
 {
     Squ5, Squ10, Squ15
 }
@@ -30,7 +30,7 @@ public class PuzzleInfo
     public Cell[,] Map;
     public string LevelName;
     public Texture2D Result;
-    public Boards Board = Boards.Squ10;
+    public BoardTypes BoardType = BoardTypes.Squ10;
 }
 
 [Serializable]

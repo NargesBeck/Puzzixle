@@ -25,6 +25,6 @@ public class MainMenu : MonoBehaviour
     private void Play()
     {
         Debug.Log("main menu >> click >> play");
-        ManagersSingleton.Managers.CameraMovement.GoToAnotherPage(CameraMovement.Pages.Puzzle);
+        ManagersSingleton.Managers.CameraMovement.GoHere(Pages.Puzzle);
     }
 }

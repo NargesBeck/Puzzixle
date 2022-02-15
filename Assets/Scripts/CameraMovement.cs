@@ -1,36 +1,47 @@
 ﻿using DG.Tweening;
 using UnityEngine;
+using System;
+public enum Pages
+{
+    MainMenu, Puzzle
+}
 
 public class CameraMovement : MonoBehaviour
 {
     [SerializeField]
-    private Transform pinMain, pin5x5;
+    private Transform pinMain, pinPuzzle;
 
-    public enum Pages
-    {
-        MainMenu, Puzzle
-    }
 
     public Pages CurrentPage;
     private new Transform transform;
     private bool ZoomedOut = false;
 
+    public Action OnFinishedGoingToNewPage;
+
+    private bool IsSwitchingPages;
+
     private void Awake()
     {
         transform = GetComponent<Transform>();
-        GoHere(pinMain.position);
+
+        OnFinishedGoingToNewPage = ManagersSingleton.Managers.PuzzlePageManager.DisplayPage;
+        GoHere(Pages.MainMenu);
     }
 
-    private void GoHere(Vector3 destination)
+    public void GoHere(Pages page)
     {
+        if (IsSwitchingPages)
+            return;
+
+        if (page == Pages.Puzzle)
+        {
+            OnFinishedGoingToNewPage = ManagersSingleton.Managers.PuzzlePageManager.DisplayPage;
+        }
+
+        CurrentPage = page;
+        IsSwitchingPages = true;
         ZoomInOut();
-        transform.DOMove(destination, 1, false).OnComplete(ZoomInOut);
-    }
-
-    public void GoToAnotherPage(Pages newPage)
-    {
-        GoHere(GetPagePosition(newPage));
-        CurrentPage = newPage;
+        transform.DOMove(GetPagePinPos(page), 1, false).OnComplete(ZoomInOut);
     }
 
     private Vector3 GetPagePosition(Pages page)
@@ -43,7 +54,7 @@ public class CameraMovement : MonoBehaviour
                 break;
 
             case Pages.Puzzle:
-                output = pin5x5.position;
+                output = pinPuzzle.position;
                 break;
         }
         return output;
@@ -51,7 +62,26 @@ public class CameraMovement : MonoBehaviour
 
     public void ZoomInOut()
     {
-        ManagersSingleton.Managers.Camera.DOOrthoSize((ZoomedOut) ? 5 : 5.5f, 0.5f);
+        ManagersSingleton.Managers.Camera.DOOrthoSize((ZoomedOut) ? 5 : 5.5f, 0.5f).OnComplete(FinishedGoingToNewPage);
         ZoomedOut = !ZoomedOut;
+    }
+
+    private void FinishedGoingToNewPage()
+    {
+        IsSwitchingPages = false;
+        if (OnFinishedGoingToNewPage != null)
+            OnFinishedGoingToNewPage();
+    }
+
+    private Vector3 GetPagePinPos(Pages page)
+    {
+        switch(page)
+        {
+            case Pages.MainMenu:
+                return pinMain.position;
+            case Pages.Puzzle:
+                return pinPuzzle.position;
+        }
+        return Vector3.zero;
     }
 }

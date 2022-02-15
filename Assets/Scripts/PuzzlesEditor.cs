@@ -113,28 +113,28 @@ public class PuzzlesEditor : EditorWindow
         {
             if (CurrentPuzzle.Map == null)
             {
-                CurrentPuzzle.Map = new Cell[GetBoardSizeFromBoardEnum(CurrentPuzzle.Board), GetBoardSizeFromBoardEnum(CurrentPuzzle.Board)];
+                CurrentPuzzle.Map = new Cell[GetBoardSizeFromBoardEnum(CurrentPuzzle.BoardType), GetBoardSizeFromBoardEnum(CurrentPuzzle.BoardType)];
             }
 
-            ManagersSingleton.Managers.PuzzleGenerator.Generate(ref CurrentPuzzle, GetBoardSizeFromBoardEnum(CurrentPuzzle.Board));
+            ManagersSingleton.Managers.PuzzleGenerator.Generate(ref CurrentPuzzle, GetBoardSizeFromBoardEnum(CurrentPuzzle.BoardType));
         }
 
         GUI.color = Color.white;
         GUILayout.Space(20);
         CurrentPuzzle.LevelName = EditorGUILayout.TextField("Level Name: ", CurrentPuzzle.LevelName);
         GUILayout.Space(20);
-        CurrentPuzzle.Board = (Boards)EditorGUILayout.EnumPopup(CurrentPuzzle.Board);
+        CurrentPuzzle.BoardType = (BoardTypes)EditorGUILayout.EnumPopup(CurrentPuzzle.BoardType);
 
         GUILayout.Space(30);
 
-        switch (CurrentPuzzle.Board)
+        switch (CurrentPuzzle.BoardType)
         {
-            case Boards.Squ5:
+            case BoardTypes.Squ5:
                 break;
-            case Boards.Squ10:
+            case BoardTypes.Squ10:
                 Draw10x10();
                 break;
-            case Boards.Squ15:
+            case BoardTypes.Squ15:
                 break;
         }
 
@@ -148,7 +148,7 @@ public class PuzzlesEditor : EditorWindow
         int cellWidth = 25;
         int cellHeight = 20;
         if (CurrentPuzzle.Map == null)
-            CurrentPuzzle.Map = new Cell[GetBoardSizeFromBoardEnum(CurrentPuzzle.Board), GetBoardSizeFromBoardEnum(CurrentPuzzle.Board)];
+            CurrentPuzzle.Map = new Cell[GetBoardSizeFromBoardEnum(CurrentPuzzle.BoardType), GetBoardSizeFromBoardEnum(CurrentPuzzle.BoardType)];
 
         for (int row = 0; row < 10; row++)
         {
@@ -194,15 +194,15 @@ public class PuzzlesEditor : EditorWindow
         EditorUtility.SetDirty(puzzlesPool);
     }
 
-    private int GetBoardSizeFromBoardEnum(Boards board)
+    private int GetBoardSizeFromBoardEnum(BoardTypes board)
     {
         switch (board)
         {
-            case Boards.Squ5:
+            case BoardTypes.Squ5:
                 return 5;
-            case Boards.Squ10:
+            case BoardTypes.Squ10:
                 return 10;
-            case Boards.Squ15:
+            case BoardTypes.Squ15:
                 return 15;
             default:
                 return 10;
