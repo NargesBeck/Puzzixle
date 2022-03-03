@@ -54,11 +54,12 @@ public class PuzzlePageManager : Page
         if (!IsBoardInstantiatingNeeded(nextPuzzleInfo))
             return CurrentBoard;
 
-        return Instantiate(Resources.Load(GetPrefabPath(CurrentBoard.CurrentPuzzle.MyPool.BoardType), typeof(GameObject))) as Board;
+        return null;
+        //return Instantiate(Resources.Load(GetPrefabPath(CurrentBoard.CurrentPuzzle.MyPool.BoardType), typeof(GameObject))) as Board;
     }
 
     private bool IsBoardInstantiatingNeeded(PuzzleInfo nextPuzzleInfo)
     {
-        return CurrentBoard.CurrentPuzzle.MyPool.BoardType != nextPuzzleInfo.MyPool.BoardType;
+        return false;// CurrentBoard.CurrentPuzzle.MyPool.BoardType != nextPuzzleInfo.MyPool.BoardType;
     }
 }

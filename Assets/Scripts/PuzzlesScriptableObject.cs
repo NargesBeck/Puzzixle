@@ -30,8 +30,6 @@ public class PuzzleInfo
 {
     public Cell[,] Map;
     public string LevelName;
-    public Texture2D Result;
-    public PuzzlesPoolForOneBoard MyPool;
 }
 
 [Serializable]

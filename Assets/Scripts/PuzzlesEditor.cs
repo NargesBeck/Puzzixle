@@ -1,18 +1,23 @@
 ﻿using UnityEditor;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class PuzzlesEditor : EditorWindow
 {
-    private Vector2 ColumnOneScrollPos = new Vector2();
-    private static int GapBetweenColumns = 20;
-    private static Rect WindowRect = new Rect(10, 10, 900, 750);
-    private static Rect ColumnOneRect = new Rect(0, 0, 200, WindowRect.height);
-    private static Rect ColumnTwoRect = new Rect(ColumnOneRect.width + GapBetweenColumns, 0, WindowRect.width - (ColumnOneRect.width + GapBetweenColumns), WindowRect.height);
+    private Vector2 BoardsScrollPos = new Vector2();
+    private Vector2 LevelsScrollPos = new Vector2();
 
+    private static int GapBetweenColumns = 20;
+    private static Rect WindowRect = new Rect(10, 10, 500, 700);
+    private static Rect ColumnOneUpperRect = new Rect(0, 0, 200, 345);
+    private static Rect ColumnOneBottomRect = new Rect(0, 350, 200, 325);
+    private static Rect ColumnTwoRect = new Rect(ColumnOneUpperRect.width + GapBetweenColumns, 0, WindowRect.width - (ColumnOneUpperRect.width + GapBetweenColumns), WindowRect.height);
+
+    PuzzlesPoolForOneBoard CurrentBoardPool;
     PuzzleInfo CurrentPuzzle;
 
     [SerializeField]
-    public static PuzzlesPoolForOneBoard Pool = new PuzzlesPoolForOneBoard();
+    public static List<PuzzlesPoolForOneBoard> PuzzlesPool = new List<PuzzlesPoolForOneBoard>();
 
     //private GameManager.PuzzleSizes PuzzSize;
 
@@ -22,7 +27,7 @@ public class PuzzlesEditor : EditorWindow
         var objectDB = Resources.Load<PuzzlesScriptableObject>("Puzzles");
         if (objectDB != null)
         {
-            Pool = objectDB.PuzzlesPool[0];
+            PuzzlesPool = objectDB.PuzzlesPool;
         }
 
         PuzzlesEditor PuzzlesWindow = (PuzzlesEditor)EditorWindow.GetWindow(typeof(PuzzlesEditor));
@@ -40,46 +45,82 @@ public class PuzzlesEditor : EditorWindow
     
     private void DrawFirstColumn()
     {
-        GUILayout.BeginArea(ColumnOneRect);
-        ColumnOneScrollPos = GUILayout.BeginScrollView(ColumnOneScrollPos);
+        DrawListOfBoards();
+        DrawListOfLevels();
+    }
+
+    private void DrawListOfBoards()
+    {
+        GUILayout.BeginArea(ColumnOneUpperRect);
+        BoardsScrollPos = GUILayout.BeginScrollView(BoardsScrollPos);
         EditorGUILayout.BeginVertical("box", GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true));
         EditorGUI.BeginDisabledGroup(false);
 
         GUILayout.Space(10);
-        GUI.color = Color.blue;
-        if (GUILayout.Button("Add Level"))
-        {
-            PuzzleInfo newLevel = new PuzzleInfo();
-            newLevel.LevelName = "Untitled Level";
-            Pool.PuzzlesList.Add(newLevel);
-        }
-        GUI.color = Color.white;
-        GUILayout.Space(10);
+        GUILayout.Label("Boards:");
 
-        DrawListOfLevels();
+        for (int iBoard = 0; iBoard < PuzzlesPool.Count; iBoard++)
+        {
+            if (CurrentBoardPool == PuzzlesPool[iBoard])
+            {
+                GUI.color = Color.cyan;
+            }
+
+            if (GUILayout.Button(PuzzlesPool[iBoard].BoardType.ToString()))
+            {
+                CurrentBoardPool = PuzzlesPool[iBoard];
+                CurrentPuzzle = null;
+            }
+            GUI.color = Color.white;
+        }
 
         EditorGUI.EndDisabledGroup();
         EditorGUILayout.EndVertical();
         GUILayout.EndScrollView();
         GUILayout.EndArea();
-
     }
 
     private void DrawListOfLevels()
     {
-        for(int i = 0; i < Pool.PuzzlesList.Count; i++)
-        {
-            if (CurrentPuzzle == Pool.PuzzlesList[i])
-            {
-                GUI.color = Color.cyan;
-            }
+        if (CurrentBoardPool == null)
+            return;
 
-            if (GUILayout.Button(Pool.PuzzlesList[i].LevelName))
+        GUILayout.BeginArea(ColumnOneBottomRect);
+        LevelsScrollPos = GUILayout.BeginScrollView(LevelsScrollPos);
+        EditorGUILayout.BeginVertical("box", GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true));
+        EditorGUI.BeginDisabledGroup(false);
+
+        GUI.color = Color.cyan;
+        if (GUILayout.Button("Generate 100"))
+        {
+            for (int iAppendedLevel = 0; iAppendedLevel < 100; iAppendedLevel++)
             {
-                CurrentPuzzle = Pool.PuzzlesList[i];
+                PuzzleInfo puzzle = new PuzzleInfo();
+                if (puzzle.Map == null)
+                    puzzle.Map = new Cell[GetBoardSizeFromBoardEnum(CurrentBoardPool.BoardType), GetBoardSizeFromBoardEnum(CurrentBoardPool.BoardType)];
+
+                CurrentBoardPool.PuzzlesList.Add(puzzle);
+
+                ManagersSingleton.Managers.PuzzleGenerator.Generate(ref puzzle, GetBoardSizeFromBoardEnum(CurrentBoardPool.BoardType));
             }
-            GUI.color = Color.white;
         }
+        GUI.color = Color.white;
+
+        for (int iLevel = 0; iLevel < CurrentBoardPool.PuzzlesList.Count; iLevel++)
+        {
+            GUI.color = (CurrentBoardPool.PuzzlesList[iLevel] == CurrentPuzzle) ? Color.cyan : Color.white;
+
+            if (GUILayout.Button($"Level {iLevel + 1}"))
+            {
+                CurrentPuzzle = CurrentBoardPool.PuzzlesList[iLevel];
+            }
+        }
+        GUI.color = Color.white;
+
+        EditorGUI.EndDisabledGroup();
+        EditorGUILayout.EndVertical();
+        GUILayout.EndScrollView();
+        GUILayout.EndArea();
     }
 
     private void DrawSecondColumn()
@@ -98,7 +139,7 @@ public class PuzzlesEditor : EditorWindow
         {
             if (CurrentPuzzle != null)
             {
-                Pool.PuzzlesList.Remove(CurrentPuzzle);
+                CurrentBoardPool.PuzzlesList.Remove(CurrentPuzzle);
                 CurrentPuzzle = null;
 
                 EditorGUI.EndDisabledGroup();
@@ -109,27 +150,19 @@ public class PuzzlesEditor : EditorWindow
             }
         }
 
-        if (GUILayout.Button("Generate"))
-        {
-            if (CurrentPuzzle.Map == null)
-            {
-                CurrentPuzzle.Map = new Cell[GetBoardSizeFromBoardEnum(CurrentPuzzle.MyPool.BoardType), GetBoardSizeFromBoardEnum(CurrentPuzzle.MyPool.BoardType)];
-            }
-
-            ManagersSingleton.Managers.PuzzleGenerator.Generate(ref CurrentPuzzle, GetBoardSizeFromBoardEnum(CurrentPuzzle.MyPool.BoardType));
-        }
-
         GUI.color = Color.white;
         GUILayout.Space(20);
+
+        if (CurrentPuzzle.LevelName == null || CurrentPuzzle.LevelName == "")
+            CurrentPuzzle.LevelName = $"Level {CurrentBoardPool.PuzzlesList.IndexOf(CurrentPuzzle)}";
         CurrentPuzzle.LevelName = EditorGUILayout.TextField("Level Name: ", CurrentPuzzle.LevelName);
-        GUILayout.Space(20);
-        CurrentPuzzle.MyPool.BoardType = (BoardTypes)EditorGUILayout.EnumPopup(CurrentPuzzle.MyPool.BoardType);
 
         GUILayout.Space(30);
 
-        switch (CurrentPuzzle.MyPool.BoardType)
+        switch (CurrentBoardPool.BoardType)
         {
             case BoardTypes.Squ5:
+                Draw5x5();
                 break;
             case BoardTypes.Squ10:
                 Draw10x10();
@@ -147,13 +180,59 @@ public class PuzzlesEditor : EditorWindow
     {
         int cellWidth = 25;
         int cellHeight = 20;
+        int boardSize = GetBoardSizeFromBoardEnum(CurrentBoardPool.BoardType);
         if (CurrentPuzzle.Map == null)
-            CurrentPuzzle.Map = new Cell[GetBoardSizeFromBoardEnum(CurrentPuzzle.MyPool.BoardType), GetBoardSizeFromBoardEnum(CurrentPuzzle.MyPool.BoardType)];
+            CurrentPuzzle.Map = new Cell[boardSize, boardSize];
 
-        for (int row = 0; row < 10; row++)
+        for (int row = 0; row < boardSize; row++)
         {
             GUILayout.BeginHorizontal("box");
-            for (int col = 0; col < 10; col++)
+            for (int col = 0; col < boardSize; col++)
+            {
+                if (CurrentPuzzle.Map[row, col] == null)
+                {
+                    CurrentPuzzle.Map[row, col] = new Cell();
+                    CurrentPuzzle.Map[row, col].CellMode = CellModes.MarkedAsEmpty;
+                }
+
+                if (CurrentPuzzle.Map[row, col].CellMode == CellModes.MarkedAsFull)
+                {
+                    GUI.color = Color.cyan;
+                }
+                else if (CurrentPuzzle.Map[row, col].CellMode == CellModes.NA)
+                {
+                    GUI.color = Color.black;
+                }
+                else
+                {
+                    GUI.color = Color.white;
+                }
+
+                if (GUILayout.Button("", GUILayout.MaxHeight(cellHeight), GUILayout.MaxWidth(cellWidth)))
+                {
+                    if (CurrentPuzzle.Map[row, col].CellMode == CellModes.MarkedAsFull)
+                        CurrentPuzzle.Map[row, col].CellMode = CellModes.MarkedAsEmpty;
+
+                    if (CurrentPuzzle.Map[row, col].CellMode == CellModes.MarkedAsEmpty)
+                        CurrentPuzzle.Map[row, col].CellMode = CellModes.MarkedAsFull;
+                }
+            }
+            GUILayout.EndHorizontal();
+        }
+    }
+
+    private void Draw5x5()
+    {
+        int cellWidth = 50;
+        int cellHeight = 40;
+        int boardSize = GetBoardSizeFromBoardEnum(CurrentBoardPool.BoardType);
+        if (CurrentPuzzle.Map == null)
+            CurrentPuzzle.Map = new Cell[boardSize, boardSize];
+
+        for (int row = 0; row < boardSize; row++)
+        {
+            GUILayout.BeginHorizontal("box");
+            for (int col = 0; col < boardSize; col++)
             {
                 if (CurrentPuzzle.Map[row, col] == null)
                     CurrentPuzzle.Map[row, col] = new Cell();
@@ -184,16 +263,6 @@ public class PuzzlesEditor : EditorWindow
         }
     }
 
-    private void ApplyChanges()
-    {
-        var puzzlesPool = Resources.Load<PuzzlesScriptableObject>("Rooms");
-        if (puzzlesPool != null)
-        {
-            Pool = puzzlesPool.PuzzlesPool[0];
-        }
-        EditorUtility.SetDirty(puzzlesPool);
-    }
-
     private int GetBoardSizeFromBoardEnum(BoardTypes board)
     {
         switch (board)
@@ -208,35 +277,4 @@ public class PuzzlesEditor : EditorWindow
                 return 10;
         }
     }
-
-    //private void LoadMapsFromFile()
-    //{
-    //    //Texture2D[] assets = Resources.LoadAll("/BWTextures5x5", typeof(Texture2D)) as Texture2D[];
-    //    PuzzSize = 0;
-    //    int i = 0;
-    //    while (true)
-    //    {
-    //        string path = $"/{PuzzSize.ToString()}/{i}/Map";
-    //        Debug.Log(path);
-    //        Texture2D loadedTexture = Resources.Load(path, typeof(Texture2D)) as Texture2D;
-    //        if(loadedTexture == null)
-    //        {
-    //            if(PuzzSize == GameManager.PuzzleSizes.Big)
-    //            {
-    //                break;
-    //            }
-    //            PuzzSize++;
-    //        }
-    //        else
-    //        {
-    //            ProcessTexture(PuzzSize, loadedTexture, i);
-    //        }
-    //        i++;
-    //    }
-    //}
-
-    //private void ProcessTexture(GameManager.PuzzleSizes size, Texture2D texture, int puzzInd)
-    //{
-
-    //}
 }
