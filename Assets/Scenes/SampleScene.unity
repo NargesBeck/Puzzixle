@@ -1288,7 +1288,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pinMain: {fileID: 1110182298}
-  pin5x5: {fileID: 1071451647}
+  pinPuzzle: {fileID: 0}
   CurrentPage: 0
 --- !u!20 &519420031
 Camera:
@@ -1542,6 +1542,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Camera: {fileID: 519420031}
+  Profile: {fileID: 0}
   MainMenu: {fileID: 555782471}
   GameManager: {fileID: 0}
   ActionManager: {fileID: 555782475}
@@ -1549,7 +1550,7 @@ MonoBehaviour:
   CameraMovement: {fileID: 519420030}
   PuzzleGenerator: {fileID: 555782476}
   PuzzlePageManager: {fileID: 1786485283}
-  CurrentBoard: {fileID: 0}
+  BoardSelectionPageManager: {fileID: 0}
 --- !u!4 &555782473
 Transform:
   m_ObjectHideFlags: 0
@@ -1802,6 +1803,8 @@ MonoBehaviour:
   - {fileID: 1495878718}
   - {fileID: 1221732637}
   - {fileID: 460754353}
+  CurrentPuzzle:
+    LevelName: 
 --- !u!1 &723286072
 GameObject:
   m_ObjectHideFlags: 0
@@ -17004,7 +17007,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7019753677004789406}
   m_Layer: 0
-  m_Name: Puzzle10x10 1
+  m_Name: Puzzle10x10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

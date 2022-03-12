@@ -9,7 +9,7 @@ public enum CellModes
 
 public enum BoardTypes
 {
-    Squ5, Squ10, Squ15
+    NA, Squ5, Squ10, Squ15
 }
 
 [CreateAssetMenu(fileName = "Puzzles", menuName = "Puzzles", order = 0)]

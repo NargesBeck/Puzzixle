@@ -9,7 +9,7 @@ public class PuzzlePageManager : Page
 
     private string PrefabsFolderPath = "Boards Prefabs/";
 
-    Board CurrentBoard;
+    public Board CurrentBoard;
 
     public override void DisplayPage()
     {
@@ -29,8 +29,6 @@ public class PuzzlePageManager : Page
 
     public void StartLevel(PuzzleInfo puzzleInfo)
     {
-        // instantiate
-        //      (later check if new level’s board matches the prev’s board. If not, destroy that and instantiate this.)
         CurrentBoard = InstantiateNewBoardIfNeeded(puzzleInfo);
 
         CurrentBoard.RunLevel(puzzleInfo);
@@ -54,12 +52,12 @@ public class PuzzlePageManager : Page
         if (!IsBoardInstantiatingNeeded(nextPuzzleInfo))
             return CurrentBoard;
 
-        return null;
-        //return Instantiate(Resources.Load(GetPrefabPath(CurrentBoard.CurrentPuzzle.MyPool.BoardType), typeof(GameObject))) as Board;
+        Destroy(CurrentBoard.gameObject);
+        return Instantiate(Resources.Load(GetPrefabPath(ManagersSingleton.Managers.BoardSelectionPageManager.CurrentBoardType), typeof(GameObject))) as Board;
     }
 
     private bool IsBoardInstantiatingNeeded(PuzzleInfo nextPuzzleInfo)
     {
-        return false;// CurrentBoard.CurrentPuzzle.MyPool.BoardType != nextPuzzleInfo.MyPool.BoardType;
+        return ManagersSingleton.Managers.BoardSelectionPageManager.CurrentBoardType != ManagersSingleton.Managers.BoardSelectionPageManager.PrevBoardType;
     }
 }

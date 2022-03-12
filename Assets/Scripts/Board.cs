@@ -1,6 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
+using System;
 
 public class Board : MonoBehaviour
 {
@@ -46,4 +47,8 @@ public class Board : MonoBehaviour
         return output;
     }
 
+    public void OnNACellClicked(int row, int col, Action<CellModes> callCellToChangeMode)
+    {
+
+    }
 }
