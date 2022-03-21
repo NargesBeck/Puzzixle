@@ -7,57 +7,56 @@ public class PuzzlePageManager : Page
     public MarkCellAsMananger MarkCellAsMananger;
     public Sprite EmptyCellSprite;
 
-    private string PrefabsFolderPath = "Boards Prefabs/";
+    private int NumHintsLeft;
+    public bool HintIsActive;
+    //private string PrefabsFolderPath = "Boards Prefabs/";
 
+    [SerializeField]
+    private List<Board> BoardObjects = new List<Board>();
+    
     public Board CurrentBoard;
 
     public override void DisplayPage()
     {
-        //StartLevel();
+        var DB = Resources.Load<PuzzlesScriptableObject>("Puzzles");
 
+        StartLevel(DB.PuzzlesPool[0].BoardType, DB.PuzzlesPool[0].PuzzlesList[0]);
     }
 
-    public void Click()
+    public void StartLevel(BoardTypes boardType, PuzzleInfo puzzleInfo)
     {
-        switch(name)
-        {
-            case "MarkAs":
-                MarkCellAsMananger?.Click();
-                break;
-        }
-    }
-
-    public void StartLevel(PuzzleInfo puzzleInfo)
-    {
-        CurrentBoard = InstantiateNewBoardIfNeeded(puzzleInfo);
-
+        //CurrentBoard = InstantiateNewBoardIfNeeded(puzzleInfo);
+        CurrentBoard = ActivateBoard(boardType);
         CurrentBoard.RunLevel(puzzleInfo);
     }
 
-    private string GetPrefabPath(BoardTypes boardType)
+    public void OnHintClicked()
     {
-        switch (boardType)
+        if (HintIsActive)
         {
-            case BoardTypes.Squ5:
-                return PrefabsFolderPath + "Puzzle5x5";
-            
-            case BoardTypes.Squ10:
-            default:
-                return PrefabsFolderPath + "Puzzle10x10";
+            HintIsActive = false;
+        }
+        else if (NumHintsLeft > 0)
+        {
+            HintIsActive = true;
         }
     }
 
-    private Board InstantiateNewBoardIfNeeded(PuzzleInfo nextPuzzleInfo)
+    private Board ActivateBoard(BoardTypes type)
     {
-        if (!IsBoardInstantiatingNeeded(nextPuzzleInfo))
-            return CurrentBoard;
-
-        Destroy(CurrentBoard.gameObject);
-        return Instantiate(Resources.Load(GetPrefabPath(ManagersSingleton.Managers.BoardSelectionPageManager.CurrentBoardType), typeof(GameObject))) as Board;
-    }
-
-    private bool IsBoardInstantiatingNeeded(PuzzleInfo nextPuzzleInfo)
-    {
-        return ManagersSingleton.Managers.BoardSelectionPageManager.CurrentBoardType != ManagersSingleton.Managers.BoardSelectionPageManager.PrevBoardType;
+        int indexToReturn = 0;
+        for (int iBoardObj = 0; iBoardObj < BoardObjects.Count; iBoardObj++)
+        {
+            if (BoardObjects[iBoardObj].MyType == type)
+            {
+                indexToReturn = iBoardObj;
+                BoardObjects[iBoardObj].gameObject.SetActive(true);
+            }
+            else
+            {
+                BoardObjects[iBoardObj].gameObject.SetActive(false);
+            }
+        }
+        return BoardObjects[indexToReturn];
     }
 }

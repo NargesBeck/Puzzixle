@@ -1,15 +1,13 @@
 using System.Collections.Generic;
-using System.Collections;
 using UnityEngine;
 using System;
 
 public class Board : MonoBehaviour
 {
-    [SerializeField]
-    List<TextMesh> RowsInfo = new List<TextMesh>();
+    public BoardTypes MyType;
 
     [SerializeField]
-    List<CellSpriteManager> CellsList = new List<CellSpriteManager>();
+    List<TextMesh> RowsInfo = new List<TextMesh>();
 
     public PuzzleInfo CurrentPuzzle;
 
@@ -48,6 +46,35 @@ public class Board : MonoBehaviour
     }
 
     public void OnNACellClicked(int row, int col, Action<CellModes> callCellToChangeMode)
+    {
+        CellModes currectCellValue = CurrentPuzzle.Map[row, col].CellMode;
+
+        if (ManagersSingleton.Managers.PuzzlePageManager.HintIsActive)
+        {
+            PlayerUsedHint();
+        }
+        else if (ManagersSingleton.Managers.PuzzlePageManager.MarkCellAsMananger.Mark != currectCellValue)
+        {
+            PlayerWasWrong();
+        }
+        else
+        {
+            PlayerWasRight();
+        }
+
+        callCellToChangeMode(currectCellValue);
+    }
+
+    private void PlayerWasWrong()
+    {
+
+    }
+
+    private void PlayerWasRight()
+    {
+
+    }
+    private void PlayerUsedHint()
     {
 
     }

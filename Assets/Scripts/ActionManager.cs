@@ -16,5 +16,12 @@ public class ActionManager : MonoBehaviour
 
         MarkCellAsMananger markCell = clicked.GetComponent<MarkCellAsMananger>();
         markCell?.Click();
+        if (markCell == null)
+            return;
+
+        HintHandler hint = clicked.GetComponent<HintHandler>();
+        hint?.Click();
+        if (hint == null)
+            return;
     }
 }

@@ -13,18 +13,19 @@ MonoBehaviour:
   m_Name: Puzzles
   m_EditorClassIdentifier: 
   PuzzlesPool:
-  - BoardType: 0
+  - BoardType: 2
     PuzzlesList:
     - LevelName: 
+    - LevelName: Level 1
     - LevelName: 
-    - LevelName: Level 2
     - LevelName: 
     - LevelName: 
+    - LevelName: Level 5
+    - LevelName: Level 6
     - LevelName: 
     - LevelName: 
     - LevelName: 
     - LevelName: 
-    - LevelName: Level 9
     - LevelName: 
     - LevelName: 
     - LevelName: 
@@ -58,7 +59,6 @@ MonoBehaviour:
     - LevelName: 
     - LevelName: 
     - LevelName: 
-    - LevelName: Level 43
     - LevelName: 
     - LevelName: 
     - LevelName: 
@@ -102,34 +102,30 @@ MonoBehaviour:
     - LevelName: 
     - LevelName: 
     - LevelName: 
-    - LevelName: Level 87
     - LevelName: 
     - LevelName: 
     - LevelName: 
     - LevelName: 
-    - LevelName: Level 92
     - LevelName: 
     - LevelName: 
     - LevelName: 
     - LevelName: 
-    - LevelName: Level 97
-    - LevelName: Level 98
+    - LevelName: 
+    - LevelName: 
+    - LevelName: 
+    - LevelName: 
     - LevelName: 
   - BoardType: 1
     PuzzlesList:
+    - LevelName: Level 0
     - LevelName: 
     - LevelName: 
-    - LevelName: Level 2
     - LevelName: 
     - LevelName: Level 4
     - LevelName: 
-    - LevelName: Level 6
     - LevelName: 
-    - LevelName: Level 8
-    - LevelName: Level 9
-    - LevelName: Level 10
+    - LevelName: Level 7
     - LevelName: 
-    - LevelName: Level 12
     - LevelName: 
     - LevelName: 
     - LevelName: 
@@ -147,7 +143,6 @@ MonoBehaviour:
     - LevelName: 
     - LevelName: 
     - LevelName: 
-    - LevelName: Level 30
     - LevelName: 
     - LevelName: 
     - LevelName: 
@@ -206,14 +201,19 @@ MonoBehaviour:
     - LevelName: 
     - LevelName: 
     - LevelName: 
-    - LevelName: Level 89
     - LevelName: 
     - LevelName: 
     - LevelName: 
     - LevelName: 
-    - LevelName: Level 94
     - LevelName: 
-    - LevelName: Level 96
+    - LevelName: 
+    - LevelName: 
+    - LevelName: 
+    - LevelName: 
+    - LevelName: 
+    - LevelName: 
+    - LevelName: 
+    - LevelName: 
     - LevelName: 
     - LevelName: 
     - LevelName: 

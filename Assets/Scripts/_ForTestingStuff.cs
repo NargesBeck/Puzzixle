@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class _ForTestingStuff : MonoBehaviour
 {
@@ -44,3 +45,21 @@ public class _ForTestingStuff : MonoBehaviour
         return output;
     }
 }
+
+//[CustomEditor(typeof(_ForTestingStuff))]
+//public class _ForTesting_InspectorEditor : Editor
+//{
+//    public override void OnInspectorGUI()
+//    {
+//        base.OnInspectorGUI();
+
+//        if (GUILayout.Button("Name all cells"))
+//        {
+//            CellSpriteManager[] arr = FindObjectsOfType<CellSpriteManager>();
+//            foreach(CellSpriteManager i in arr)
+//            {
+//                i.AssignMyRowAndColumnIndex();
+//            }
+//        }
+//    }
+//}
