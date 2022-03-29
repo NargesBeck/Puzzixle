@@ -5,11 +5,11 @@ using UnityEngine;
 public class PuzzlePageManager : Page
 {
     public MarkCellAsMananger MarkCellAsMananger;
+    public LivesHandler LivesHandler;
     public Sprite EmptyCellSprite;
-
-    private int NumHintsLeft;
     public bool HintIsActive;
-    //private string PrefabsFolderPath = "Boards Prefabs/";
+    private int NumHintsLeft;
+
 
     [SerializeField]
     private List<Board> BoardObjects = new List<Board>();
@@ -25,8 +25,8 @@ public class PuzzlePageManager : Page
 
     public void StartLevel(BoardTypes boardType, PuzzleInfo puzzleInfo)
     {
-        //CurrentBoard = InstantiateNewBoardIfNeeded(puzzleInfo);
         CurrentBoard = ActivateBoard(boardType);
+        PrepareLevel2DArray(boardType, ref puzzleInfo);
         CurrentBoard.RunLevel(puzzleInfo);
     }
 
@@ -58,5 +58,37 @@ public class PuzzlePageManager : Page
             }
         }
         return BoardObjects[indexToReturn];
+    }
+
+    private void PrepareLevel2DArray(BoardTypes boardType, ref PuzzleInfo puzzleInfo)
+    {
+        int boardSize = GetBoardSizeFromBoardEnum(boardType);
+
+        puzzleInfo.Map2D = new Cell[boardSize, boardSize];
+
+        int index = 0;
+        for (int row = 0; row < boardSize; row++)
+        {
+            for (int col = 0; col < boardSize; col++)
+            {
+                puzzleInfo.Map2D[row, col] = puzzleInfo.Map1D[index];
+                index++;
+            }
+        }
+    }
+
+    public static int GetBoardSizeFromBoardEnum(BoardTypes board)
+    {
+        switch (board)
+        {
+            case BoardTypes.Squ5:
+                return 5;
+            case BoardTypes.Squ10:
+                return 10;
+            case BoardTypes.Squ15:
+                return 15;
+            default:
+                return 10;
+        }
     }
 }

@@ -28,7 +28,8 @@ public class PuzzlesPoolForOneBoard
 [Serializable]
 public class PuzzleInfo
 {
-    public Cell[,] Map;
+    public Cell[] Map1D;
+    public Cell[,] Map2D;
     public string LevelName;
 }
 

@@ -24,15 +24,16 @@ public class Board : MonoBehaviour
     private List<string> SequencesInRowsToString()
     {
         List<string> output = new List<string>();
-        for (int row = 0; row <= CurrentPuzzle.Map.GetUpperBound(0); row++)
+        for (int row = 0; row <= CurrentPuzzle.Map2D.GetUpperBound(0); row++)
         {
             string rowInfo = "";
             int seqLength = 0;
-            for (int col = 0; col <= CurrentPuzzle.Map.GetUpperBound(1); col ++)
+            for (int col = 0; col <= CurrentPuzzle.Map2D.GetUpperBound(1); col ++)
             {
-                if (CurrentPuzzle.Map[row, col].CellMode == CellModes.MarkedAsFull)
+                if (CurrentPuzzle.Map2D[row, col].CellMode == CellModes.MarkedAsFull)
                     seqLength++;
-                else if (seqLength > 0)
+                if ((CurrentPuzzle.Map2D[row, col].CellMode == CellModes.MarkedAsEmpty && seqLength > 0)
+                    || (col == CurrentPuzzle.Map2D.GetUpperBound(0) && seqLength > 0))
                 {
                     if (rowInfo != "")
                         rowInfo += " ";
@@ -40,6 +41,8 @@ public class Board : MonoBehaviour
                     seqLength = 0;
                 }
             }
+            if (rowInfo == "")
+                rowInfo = "0";
             output.Add(rowInfo);
         }
         return output;
@@ -47,7 +50,7 @@ public class Board : MonoBehaviour
 
     public void OnNACellClicked(int row, int col, Action<CellModes> callCellToChangeMode)
     {
-        CellModes currectCellValue = CurrentPuzzle.Map[row, col].CellMode;
+        CellModes currectCellValue = CurrentPuzzle.Map2D[row, col].CellMode;
 
         if (ManagersSingleton.Managers.PuzzlePageManager.HintIsActive)
         {
@@ -67,7 +70,7 @@ public class Board : MonoBehaviour
 
     private void PlayerWasWrong()
     {
-
+        ManagersSingleton.Managers.PuzzlePageManager.LivesHandler.ReduceALife();
     }
 
     private void PlayerWasRight()

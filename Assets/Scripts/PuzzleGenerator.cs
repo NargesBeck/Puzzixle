@@ -6,21 +6,23 @@ public class PuzzleGenerator : MonoBehaviour
 {
     public void Generate(ref PuzzleInfo puzzle, int size)
     {
+        int index = 0;
         for (int row = 0; row < size; row++)
         {
             bool[] rowBoolValues = AssignRowWithRandoms(size);
             for (int col = 0; col < size; col++)
             {
-                if (puzzle.Map[row, col] == null)
-                    puzzle.Map[row, col] = new Cell();
+                if (puzzle.Map1D[index] == null)
+                    puzzle.Map1D[index] = new Cell();
                 if (rowBoolValues[col])
                 {
-                    puzzle.Map[row, col].CellMode = CellModes.MarkedAsFull;
+                    puzzle.Map1D[index].CellMode = CellModes.MarkedAsFull;
                 }
                 else
                 {
-                    puzzle.Map[row, col].CellMode = CellModes.MarkedAsEmpty;
+                    puzzle.Map1D[index].CellMode = CellModes.MarkedAsEmpty;
                 }
+                index++;
             }
         }
     }

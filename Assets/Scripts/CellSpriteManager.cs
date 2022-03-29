@@ -1,5 +1,6 @@
 ﻿using DG.Tweening;
 using UnityEngine;
+using System.Collections;
 
 public class CellSpriteManager : MonoBehaviour
 {
@@ -40,13 +41,22 @@ public class CellSpriteManager : MonoBehaviour
 
         if (newMode == CellModes.MarkedAsEmpty)
         {
-            SpriteRenderer.sprite = ManagersSingleton.Managers.PuzzlePageManager.EmptyCellSprite;
-            ChangeMode(CellModes.MarkedAsEmpty);
+            Sequence sequence = DOTween.Sequence();
+            sequence.Append(SpriteRenderer.DOFade(0, 0.1f));
+            sequence.Append(SpriteRenderer.DOFade(1, 0.25f));
+
+            StartCoroutine(ChangeSpriteWithDelay());
+            sequence.Play();
         }
         else
         {
             SpriteRenderer.DOFade(0, 0.5f);
-            ChangeMode(CellModes.MarkedAsFull);
         }
+    }
+
+    private IEnumerator ChangeSpriteWithDelay()
+    {
+        yield return new WaitForSecondsRealtime(0.1f);
+        SpriteRenderer.sprite = ManagersSingleton.Managers.PuzzlePageManager.EmptyCellSprite;
     }
 }
