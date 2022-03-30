@@ -38,6 +38,27 @@ TextureImporter:
   - first:
       213: 6479713075233392517
     second: Hearts1
+  - first:
+      213: -6368822839475352522
+    second: GlowWhite
+  - first:
+      213: -2456073116495786277
+    second: HeartOut
+  - first:
+      213: 8916837462556162364
+    second: OutOfLives
+  - first:
+      213: -57170458810043329
+    second: Restart
+  - first:
+      213: 3478242933374386415
+    second: LevelsMenuBlue
+  - first:
+      213: 6345175933638203786
+    second: NextLevel
+  - first:
+      213: -3230261729094713080
+    second: LevelsMenuBlack
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -390,7 +411,7 @@ TextureImporter:
         width: 187
         height: 155
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -398,6 +419,153 @@ TextureImporter:
       bones: []
       spriteID: 5878dbff5b09ce950800000000000000
       internalID: 6479713075233392517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GlowWhite
+      rect:
+        serializedVersion: 2
+        x: 1033
+        y: 6
+        width: 399
+        height: 399
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63c4da7fe556d97a0800000000000000
+      internalID: -6368822839475352522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeartOut
+      rect:
+        serializedVersion: 2
+        x: 1458
+        y: 282
+        width: 188
+        height: 156
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdec1ec63864aedd0800000000000000
+      internalID: -2456073116495786277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OutOfLives
+      rect:
+        serializedVersion: 2
+        x: 1109
+        y: 459
+        width: 460
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c393e83cd68febb70800000000000000
+      internalID: 8916837462556162364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Restart
+      rect:
+        serializedVersion: 2
+        x: 1648
+        y: 364
+        width: 402
+        height: 153
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f343bf645c3e43ff0800000000000000
+      internalID: -57170458810043329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LevelsMenuBlue
+      rect:
+        serializedVersion: 2
+        x: 1647
+        y: 261
+        width: 403
+        height: 103
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe00b46f483354030800000000000000
+      internalID: 3478242933374386415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NextLevel
+      rect:
+        serializedVersion: 2
+        x: 1645
+        y: 106
+        width: 405
+        height: 155
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a89dcd9b4e79e0850800000000000000
+      internalID: 6345175933638203786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LevelsMenuBlack
+      rect:
+        serializedVersion: 2
+        x: 1646
+        y: 1
+        width: 404
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80145c1721ecb23d0800000000000000
+      internalID: -3230261729094713080
       vertices: []
       indices: 
       edges: []
