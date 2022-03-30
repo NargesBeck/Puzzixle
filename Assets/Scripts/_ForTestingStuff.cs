@@ -5,7 +5,6 @@ using UnityEditor;
 
 public class _ForTestingStuff : MonoBehaviour
 {
-    // Start is called before the first frame update
     void Start()
     {
         List<string> namesToChange = NamesToChange();
@@ -23,6 +22,21 @@ public class _ForTestingStuff : MonoBehaviour
         }
      
         
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.A))
+            ManagersSingleton.Managers.CameraMovement.GoHere(Pages.MainMenu);
+        if (Input.GetKeyDown(KeyCode.B))
+            ManagersSingleton.Managers.CameraMovement.GoHere(Pages.Puzzle);
+        if (Input.GetKeyDown(KeyCode.C))
+            ManagersSingleton.Managers.CameraMovement.GoHere(Pages.LevelWon);
+        if (Input.GetKeyDown(KeyCode.D))
+            ManagersSingleton.Managers.CameraMovement.GoHere(Pages.LevelFailed);
+        if (Input.GetKeyDown(KeyCode.E))
+            ManagersSingleton.Managers.CameraMovement.GoHere(Pages.BoardSelection);
+
     }
 
     List<string> NamesToChange()
@@ -45,21 +59,3 @@ public class _ForTestingStuff : MonoBehaviour
         return output;
     }
 }
-
-//[CustomEditor(typeof(_ForTestingStuff))]
-//public class _ForTesting_InspectorEditor : Editor
-//{
-//    public override void OnInspectorGUI()
-//    {
-//        base.OnInspectorGUI();
-
-//        if (GUILayout.Button("Name all cells"))
-//        {
-//            CellSpriteManager[] arr = FindObjectsOfType<CellSpriteManager>();
-//            foreach(CellSpriteManager i in arr)
-//            {
-//                i.AssignMyRowAndColumnIndex();
-//            }
-//        }
-//    }
-//}

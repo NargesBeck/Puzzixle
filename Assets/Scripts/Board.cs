@@ -70,15 +70,22 @@ public class Board : MonoBehaviour
 
     private void PlayerWasWrong()
     {
-        ManagersSingleton.Managers.PuzzlePageManager.LivesHandler.ReduceALife();
+        if (ManagersSingleton.Managers.PuzzlePageManager.LivesHandler.ReduceALife())
+        {
+            PlayerLost();
+        }
     }
 
     private void PlayerWasRight()
     {
-
     }
     private void PlayerUsedHint()
     {
 
+    }
+
+    private void PlayerLost()
+    {
+        ManagersSingleton.Managers.CameraMovement.GoHere(Pages.LevelFailed);
     }
 }

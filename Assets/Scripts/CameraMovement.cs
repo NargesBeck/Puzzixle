@@ -3,13 +3,13 @@ using UnityEngine;
 using System;
 public enum Pages
 {
-    MainMenu, Puzzle
+    MainMenu, Puzzle, BoardSelection, LevelWon, LevelFailed
 }
 
 public class CameraMovement : MonoBehaviour
 {
     [SerializeField]
-    private Transform pinMain, pinPuzzle;
+    private Transform pinMain, pinPuzzle, pinBoard, pinLevelCompleted, pinLevelFailed;
 
 
     public Pages CurrentPage;
@@ -33,31 +33,23 @@ public class CameraMovement : MonoBehaviour
         if (IsSwitchingPages)
             return;
 
-        if (page == Pages.Puzzle)
+        switch (page)
         {
-            OnFinishedGoingToNewPage = ManagersSingleton.Managers.PuzzlePageManager.DisplayPage;
+            case Pages.Puzzle:
+                OnFinishedGoingToNewPage = ManagersSingleton.Managers.PuzzlePageManager.DisplayPage;
+                break;
+            case Pages.BoardSelection:
+                break;
+            case Pages.LevelWon:
+                break;
+            case Pages.LevelFailed:
+                break;
         }
 
         CurrentPage = page;
         IsSwitchingPages = true;
         ZoomInOut();
         transform.DOMove(GetPagePinPos(page), 1, false).OnComplete(ZoomInOut);
-    }
-
-    private Vector3 GetPagePosition(Pages page)
-    {
-        Vector3 output = default;
-        switch(page)
-        {
-            case Pages.MainMenu:
-                output = pinMain.position;
-                break;
-
-            case Pages.Puzzle:
-                output = pinPuzzle.position;
-                break;
-        }
-        return output;
     }
 
     public void ZoomInOut()
@@ -75,13 +67,26 @@ public class CameraMovement : MonoBehaviour
 
     private Vector3 GetPagePinPos(Pages page)
     {
-        switch(page)
+        Vector3 output = default;
+        switch (page)
         {
             case Pages.MainMenu:
-                return pinMain.position;
+                output = pinMain.position;
+                break;
+
             case Pages.Puzzle:
-                return pinPuzzle.position;
+                output = pinPuzzle.position;
+                break;
+            case Pages.BoardSelection:
+                output = pinBoard.position;
+                break;
+            case Pages.LevelWon:
+                output = pinLevelCompleted.position;
+                break;
+            case Pages.LevelFailed:
+                output = pinLevelFailed.position;
+                break;
         }
-        return Vector3.zero;
+        return new Vector3(output.x, output.y, -10);
     }
 }
