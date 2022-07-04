@@ -56,6 +56,21 @@ TextureImporter:
   - first:
       213: -6409350911342670421
     second: 9b
+  - first:
+      213: 5815660586452506268
+    second: heart
+  - first:
+      213: -3498286804240844593
+    second: life-0
+  - first:
+      213: 2257719399904605041
+    second: life-3
+  - first:
+      213: -5301139231979263308
+    second: life-2
+  - first:
+      213: 4184825905417817968
+    second: life-1
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -534,7 +549,7 @@ TextureImporter:
         width: 355
         height: 585
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -542,6 +557,111 @@ TextureImporter:
       bones: []
       spriteID: bad0898ed496d07a0800000000000000
       internalID: -6409350911342670421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: heart
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 5578
+        width: 991
+        height: 915
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c96ddbd9d7065b050800000000000000
+      internalID: 5815660586452506268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: life-0
+      rect:
+        serializedVersion: 2
+        x: 4052
+        y: 4903
+        width: 1750
+        height: 459
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc8b9ceafa6937fc0800000000000000
+      internalID: -3498286804240844593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: life-3
+      rect:
+        serializedVersion: 2
+        x: 4041
+        y: 4375
+        width: 1746
+        height: 463
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17372d115d7055f10800000000000000
+      internalID: 2257719399904605041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: life-2
+      rect:
+        serializedVersion: 2
+        x: 5939
+        y: 4880
+        width: 1746
+        height: 462
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ba2df484f19e66b0800000000000000
+      internalID: -5301139231979263308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: life-1
+      rect:
+        serializedVersion: 2
+        x: 5935
+        y: 4379
+        width: 1746
+        height: 462
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07f08432dfc731a30800000000000000
+      internalID: 4184825905417817968
       vertices: []
       indices: 
       edges: []
