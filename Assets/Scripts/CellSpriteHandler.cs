@@ -1,8 +1,9 @@
 ﻿using DG.Tweening;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using System.Collections;
 
-public class CellSpriteManager : MonoBehaviour
+public class CellSpriteHandler : MonoBehaviour, IPointerClickHandler
 {
     SpriteRenderer spriteRenderer;
     private SpriteRenderer SpriteRenderer
@@ -28,12 +29,6 @@ public class CellSpriteManager : MonoBehaviour
 
     [SerializeField]
     private int myColIndex;
-    public void Click()
-    {
-        if (MyMode != CellModes.NA)
-            return;
-        ManagersSingleton.Managers.PuzzlePageManager.CurrentBoard.OnNACellClicked(myRowIndex, myColIndex, ChangeMode);
-    }
 
     private void ChangeMode(CellModes newMode)
     {
@@ -58,5 +53,12 @@ public class CellSpriteManager : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(0.1f);
         SpriteRenderer.sprite = ManagersSingleton.Managers.PuzzlePageManager.EmptyCellSprite;
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (MyMode != CellModes.NA)
+            return;
+        ManagersSingleton.Managers.PuzzlePageManager.CurrentBoard.OnNACellClicked(myRowIndex, myColIndex, ChangeMode);
     }
 }

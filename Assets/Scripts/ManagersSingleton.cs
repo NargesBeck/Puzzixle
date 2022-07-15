@@ -22,10 +22,9 @@ public class ManagersSingleton : MonoBehaviour
     public Profile Profile;
     public MainMenu MainMenu;
     public GameManager GameManager;
-    public ActionManager ActionManager;
-    public TouchDetector TouchDetector;
     public CameraMovement CameraMovement;
     public PuzzleGenerator PuzzleGenerator;
     public PuzzlePageManager PuzzlePageManager;
+    public NumberSpritesPrinter NumberSpritesPrinter;
     public BoardSelectionPageManager BoardSelectionPageManager;
 }

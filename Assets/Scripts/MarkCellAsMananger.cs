@@ -1,8 +1,9 @@
 ﻿using DG.Tweening;
 using UnityEngine;
 using System.Collections;
+using UnityEngine.EventSystems;
 
-public class MarkCellAsMananger : MonoBehaviour
+public class MarkCellAsMananger : MonoBehaviour, IPointerClickHandler
 {
     private const float DOTweenDuration = 0.25f;
 
@@ -27,10 +28,22 @@ public class MarkCellAsMananger : MonoBehaviour
     Sprite Empty, Full;
 
     public CellModes Mark = CellModes.MarkedAsEmpty;
+    private bool TouchDetectionEnabled = true;
 
-    public void Click()
+    private IEnumerator UnlockTouchAfterClickWithDelay()
     {
-        ManagersSingleton.Managers.TouchDetector.TouchDetectionEnabled = false;
+        yield return new WaitForSeconds(DOTweenDuration);
+        TouchDetectionEnabled = true;
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        Debug.Log("MarkAS");
+
+        if (!TouchDetectionEnabled)
+            return;
+
+        TouchDetectionEnabled = false;
         StartCoroutine(UnlockTouchAfterClickWithDelay());
 
         if (SpriteRenderer.sprite == Empty)
@@ -49,11 +62,5 @@ public class MarkCellAsMananger : MonoBehaviour
             SpriteRenderer.sprite = Empty;
             SpriteRenderer.DOFade(1, DOTweenDuration);
         }
-    }
-
-    private IEnumerator UnlockTouchAfterClickWithDelay()
-    {
-        yield return new WaitForSeconds(DOTweenDuration);
-        ManagersSingleton.Managers.TouchDetector.TouchDetectionEnabled = true;
     }
 }

@@ -71,6 +71,9 @@ TextureImporter:
   - first:
       213: 4184825905417817968
     second: life-1
+  - first:
+      213: 8886410996032745903
+    second: hint-active
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -654,7 +657,7 @@ TextureImporter:
         width: 1746
         height: 462
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -662,6 +665,27 @@ TextureImporter:
       bones: []
       spriteID: 07f08432dfc731a30800000000000000
       internalID: 4184825905417817968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hint-active
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 2879
+        width: 991
+        height: 1397
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa138aaf7bfd25b70800000000000000
+      internalID: 8886410996032745903
       vertices: []
       indices: 
       edges: []

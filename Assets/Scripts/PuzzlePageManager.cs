@@ -7,14 +7,23 @@ public class PuzzlePageManager : Page
     public MarkCellAsMananger MarkCellAsMananger;
     public LivesHandler LivesHandler;
     public Sprite EmptyCellSprite;
-    public bool HintIsActive;
-    private int NumHintsLeft;
 
-
+    [SerializeField]
+    private HintHandler HintHandler;
     [SerializeField]
     private List<Board> BoardObjects = new List<Board>();
     
     public Board CurrentBoard;
+
+    public bool IsHintActive
+    {
+        get
+        {
+            if (HintHandler == null)
+                return false;
+            return HintHandler.HintIsActive;
+        }
+    }
 
     public override void DisplayPage()
     {
@@ -28,18 +37,6 @@ public class PuzzlePageManager : Page
         CurrentBoard = ActivateBoard(boardType);
         PrepareLevel2DArray(boardType, ref puzzleInfo);
         CurrentBoard.RunLevel(puzzleInfo);
-    }
-
-    public void OnHintClicked()
-    {
-        if (HintIsActive)
-        {
-            HintIsActive = false;
-        }
-        else if (NumHintsLeft > 0)
-        {
-            HintIsActive = true;
-        }
     }
 
     private Board ActivateBoard(BoardTypes type)

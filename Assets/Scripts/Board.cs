@@ -52,7 +52,7 @@ public class Board : MonoBehaviour
     {
         CellModes currectCellValue = CurrentPuzzle.Map2D[row, col].CellMode;
 
-        if (ManagersSingleton.Managers.PuzzlePageManager.HintIsActive)
+        if (ManagersSingleton.Managers.PuzzlePageManager.IsHintActive)
         {
             PlayerUsedHint();
         }
@@ -79,6 +79,7 @@ public class Board : MonoBehaviour
     private void PlayerWasRight()
     {
     }
+
     private void PlayerUsedHint()
     {
 

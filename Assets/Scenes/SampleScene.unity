@@ -496,6 +496,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cell (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 7636882425927717103, guid: f5b9368ba44b0db45b7a087270a10ed3,
+        type: 3}
+      propertyPath: myColIndex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7636882425927717103, guid: f5b9368ba44b0db45b7a087270a10ed3,
+        type: 3}
+      propertyPath: myRowIndex
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5b9368ba44b0db45b7a087270a10ed3, type: 3}
 --- !u!4 &133073774 stripped
@@ -570,6 +580,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cell (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7636882425927717103, guid: f5b9368ba44b0db45b7a087270a10ed3,
+        type: 3}
+      propertyPath: myColIndex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7636882425927717103, guid: f5b9368ba44b0db45b7a087270a10ed3,
+        type: 3}
+      propertyPath: myRowIndex
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5b9368ba44b0db45b7a087270a10ed3, type: 3}
@@ -672,6 +692,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cell (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 7636882425927717103, guid: f5b9368ba44b0db45b7a087270a10ed3,
+        type: 3}
+      propertyPath: myColIndex
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7636882425927717103, guid: f5b9368ba44b0db45b7a087270a10ed3,
+        type: 3}
+      propertyPath: myRowIndex
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5b9368ba44b0db45b7a087270a10ed3, type: 3}
 --- !u!4 &138925162 stripped
@@ -770,7 +800,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 2308335276659092541, guid: 6676286615e187942832ca6a088be1b0,
+      objectReference: {fileID: 1599939154044617612, guid: 6676286615e187942832ca6a088be1b0,
         type: 3}
     - target: {fileID: 5955861217192760309, guid: f5b9368ba44b0db45b7a087270a10ed3,
         type: 3}
@@ -831,6 +861,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cell (21)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7636882425927717103, guid: f5b9368ba44b0db45b7a087270a10ed3,
+        type: 3}
+      propertyPath: myRowIndex
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5b9368ba44b0db45b7a087270a10ed3, type: 3}
@@ -1382,7 +1417,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 2308335276659092541, guid: 6676286615e187942832ca6a088be1b0,
+      objectReference: {fileID: 1599939154044617612, guid: 6676286615e187942832ca6a088be1b0,
         type: 3}
     - target: {fileID: 5955861217192760309, guid: f5b9368ba44b0db45b7a087270a10ed3,
         type: 3}
@@ -1443,6 +1478,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cell (22)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7636882425927717103, guid: f5b9368ba44b0db45b7a087270a10ed3,
+        type: 3}
+      propertyPath: myColIndex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7636882425927717103, guid: f5b9368ba44b0db45b7a087270a10ed3,
+        type: 3}
+      propertyPath: myRowIndex
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5b9368ba44b0db45b7a087270a10ed3, type: 3}
@@ -1518,6 +1563,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cell (23)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7636882425927717103, guid: f5b9368ba44b0db45b7a087270a10ed3,
+        type: 3}
+      propertyPath: myColIndex
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7636882425927717103, guid: f5b9368ba44b0db45b7a087270a10ed3,
+        type: 3}
+      propertyPath: myRowIndex
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5b9368ba44b0db45b7a087270a10ed3, type: 3}
@@ -1620,6 +1675,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cell (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 7636882425927717103, guid: f5b9368ba44b0db45b7a087270a10ed3,
+        type: 3}
+      propertyPath: myColIndex
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7636882425927717103, guid: f5b9368ba44b0db45b7a087270a10ed3,
+        type: 3}
+      propertyPath: myRowIndex
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5b9368ba44b0db45b7a087270a10ed3, type: 3}
 --- !u!4 &334794627 stripped
@@ -1637,6 +1702,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 349544506}
+  - component: {fileID: 349544507}
   m_Layer: 0
   m_Name: PuzzleTiny
   m_TagString: Untagged
@@ -1693,6 +1759,23 @@ Transform:
   m_Father: {fileID: 579438011}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &349544507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 349544505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c1a2bfaeb04f3b43b929af9e846126d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MyType: 1
+  RowsInfo: []
+  CurrentPuzzle:
+    Map1D: []
+    LevelName: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1791,7 +1874,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10, y: 0, z: -10}
+  m_LocalPosition: {x: 10, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1942,7 +2025,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 694dec8d04a31ae469ac2eb0ab72503b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayButton: {fileID: 922775420}
 --- !u!114 &555782472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1959,8 +2041,6 @@ MonoBehaviour:
   Profile: {fileID: 0}
   MainMenu: {fileID: 555782471}
   GameManager: {fileID: 0}
-  ActionManager: {fileID: 555782475}
-  TouchDetector: {fileID: 555782474}
   CameraMovement: {fileID: 519420030}
   PuzzleGenerator: {fileID: 555782476}
   PuzzlePageManager: {fileID: 579438012}
@@ -2224,12 +2304,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 775e40a42e34edc4a83cd5e0879b459a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MarkCellAsMananger: {fileID: 0}
+  MarkCellAsMananger: {fileID: 1196278100}
   LivesHandler: {fileID: 0}
-  EmptyCellSprite: {fileID: 0}
-  HintIsActive: 0
+  EmptyCellSprite: {fileID: 1599939154044617612, guid: 6676286615e187942832ca6a088be1b0,
+    type: 3}
+  HintHandler: {fileID: 0}
   BoardObjects: []
-  CurrentBoard: {fileID: 0}
+  CurrentBoard: {fileID: 349544507}
 --- !u!1 &621160012
 GameObject:
   m_ObjectHideFlags: 0
@@ -2672,7 +2753,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 2308335276659092541, guid: 6676286615e187942832ca6a088be1b0,
+      objectReference: {fileID: 1599939154044617612, guid: 6676286615e187942832ca6a088be1b0,
         type: 3}
     - target: {fileID: 5955861217192760309, guid: f5b9368ba44b0db45b7a087270a10ed3,
         type: 3}
@@ -2733,6 +2814,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cell (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7636882425927717103, guid: f5b9368ba44b0db45b7a087270a10ed3,
+        type: 3}
+      propertyPath: myColIndex
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5b9368ba44b0db45b7a087270a10ed3, type: 3}
@@ -2986,6 +3072,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cell (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7636882425927717103, guid: f5b9368ba44b0db45b7a087270a10ed3,
+        type: 3}
+      propertyPath: myColIndex
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5b9368ba44b0db45b7a087270a10ed3, type: 3}
@@ -3333,7 +3424,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 8522888797729293208, guid: 6676286615e187942832ca6a088be1b0,
+      objectReference: {fileID: 1599939154044617612, guid: 6676286615e187942832ca6a088be1b0,
         type: 3}
     - target: {fileID: 5955861217192760309, guid: f5b9368ba44b0db45b7a087270a10ed3,
         type: 3}
@@ -3394,6 +3485,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cell (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7636882425927717103, guid: f5b9368ba44b0db45b7a087270a10ed3,
+        type: 3}
+      propertyPath: myColIndex
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7636882425927717103, guid: f5b9368ba44b0db45b7a087270a10ed3,
+        type: 3}
+      propertyPath: myRowIndex
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5b9368ba44b0db45b7a087270a10ed3, type: 3}
@@ -3693,6 +3794,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cell (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 7636882425927717103, guid: f5b9368ba44b0db45b7a087270a10ed3,
+        type: 3}
+      propertyPath: myColIndex
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7636882425927717103, guid: f5b9368ba44b0db45b7a087270a10ed3,
+        type: 3}
+      propertyPath: myRowIndex
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5b9368ba44b0db45b7a087270a10ed3, type: 3}
 --- !u!4 &906657660 stripped
@@ -3793,6 +3904,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cell (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7636882425927717103, guid: f5b9368ba44b0db45b7a087270a10ed3,
+        type: 3}
+      propertyPath: myColIndex
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7636882425927717103, guid: f5b9368ba44b0db45b7a087270a10ed3,
+        type: 3}
+      propertyPath: myRowIndex
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5b9368ba44b0db45b7a087270a10ed3, type: 3}
@@ -4079,7 +4200,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 2308335276659092541, guid: 6676286615e187942832ca6a088be1b0,
+      objectReference: {fileID: 1599939154044617612, guid: 6676286615e187942832ca6a088be1b0,
         type: 3}
     - target: {fileID: 5955861217192760309, guid: f5b9368ba44b0db45b7a087270a10ed3,
         type: 3}
@@ -4140,6 +4261,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cell (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7636882425927717103, guid: f5b9368ba44b0db45b7a087270a10ed3,
+        type: 3}
+      propertyPath: myColIndex
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5b9368ba44b0db45b7a087270a10ed3, type: 3}
@@ -4362,7 +4488,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 694dec8d04a31ae469ac2eb0ab72503b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayButton: {fileID: 922775420}
 --- !u!1 &1110182297
 GameObject:
   m_ObjectHideFlags: 0
@@ -4734,8 +4859,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1196278098}
   - component: {fileID: 1196278099}
+  - component: {fileID: 1196278100}
+  - component: {fileID: 1196278101}
   m_Layer: 0
-  m_Name: MarkEmpty
+  m_Name: MarkAs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4795,7 +4922,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 2445927291989232540, guid: 6676286615e187942832ca6a088be1b0,
+  m_Sprite: {fileID: -1830593912729555167, guid: 6676286615e187942832ca6a088be1b0,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -4807,6 +4934,47 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1196278100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1196278097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02adb38ea50d8b644b2e7572b31267d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Empty: {fileID: 2445927291989232540, guid: 6676286615e187942832ca6a088be1b0, type: 3}
+  Full: {fileID: -1830593912729555167, guid: 6676286615e187942832ca6a088be1b0, type: 3}
+  Mark: 2
+--- !u!61 &1196278101
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1196278097}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 31.620667, y: 9.87}
+    newSize: {x: 31.620667, y: 9.900001}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 31.620667, y: 9.87}
+  m_EdgeRadius: 0
 --- !u!1001 &1200990706
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4873,6 +5041,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cell (24)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7636882425927717103, guid: f5b9368ba44b0db45b7a087270a10ed3,
+        type: 3}
+      propertyPath: myColIndex
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7636882425927717103, guid: f5b9368ba44b0db45b7a087270a10ed3,
+        type: 3}
+      propertyPath: myRowIndex
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5b9368ba44b0db45b7a087270a10ed3, type: 3}
@@ -5397,6 +5575,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cell (19)
       objectReference: {fileID: 0}
+    - target: {fileID: 7636882425927717103, guid: f5b9368ba44b0db45b7a087270a10ed3,
+        type: 3}
+      propertyPath: myColIndex
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7636882425927717103, guid: f5b9368ba44b0db45b7a087270a10ed3,
+        type: 3}
+      propertyPath: myRowIndex
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5b9368ba44b0db45b7a087270a10ed3, type: 3}
 --- !u!4 &1330050928 stripped
@@ -5737,6 +5925,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cell (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7636882425927717103, guid: f5b9368ba44b0db45b7a087270a10ed3,
+        type: 3}
+      propertyPath: myColIndex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7636882425927717103, guid: f5b9368ba44b0db45b7a087270a10ed3,
+        type: 3}
+      propertyPath: myRowIndex
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5b9368ba44b0db45b7a087270a10ed3, type: 3}
@@ -6424,6 +6622,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cell (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 7636882425927717103, guid: f5b9368ba44b0db45b7a087270a10ed3,
+        type: 3}
+      propertyPath: myRowIndex
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5b9368ba44b0db45b7a087270a10ed3, type: 3}
 --- !u!4 &1617262009 stripped
@@ -6651,7 +6854,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 2308335276659092541, guid: 6676286615e187942832ca6a088be1b0,
+      objectReference: {fileID: 1599939154044617612, guid: 6676286615e187942832ca6a088be1b0,
         type: 3}
     - target: {fileID: 5955861217192760309, guid: f5b9368ba44b0db45b7a087270a10ed3,
         type: 3}
@@ -6712,6 +6915,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cell (20)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7636882425927717103, guid: f5b9368ba44b0db45b7a087270a10ed3,
+        type: 3}
+      propertyPath: myColIndex
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7636882425927717103, guid: f5b9368ba44b0db45b7a087270a10ed3,
+        type: 3}
+      propertyPath: myRowIndex
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5b9368ba44b0db45b7a087270a10ed3, type: 3}
@@ -6814,6 +7027,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cell (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 7636882425927717103, guid: f5b9368ba44b0db45b7a087270a10ed3,
+        type: 3}
+      propertyPath: myRowIndex
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5b9368ba44b0db45b7a087270a10ed3, type: 3}
 --- !u!4 &1727760183 stripped
@@ -6833,7 +7051,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 8522888797729293208, guid: 6676286615e187942832ca6a088be1b0,
+      objectReference: {fileID: 1599939154044617612, guid: 6676286615e187942832ca6a088be1b0,
         type: 3}
     - target: {fileID: 5955861217192760309, guid: f5b9368ba44b0db45b7a087270a10ed3,
         type: 3}
@@ -6894,6 +7112,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cell (25)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7636882425927717103, guid: f5b9368ba44b0db45b7a087270a10ed3,
+        type: 3}
+      propertyPath: myColIndex
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7636882425927717103, guid: f5b9368ba44b0db45b7a087270a10ed3,
+        type: 3}
+      propertyPath: myRowIndex
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5b9368ba44b0db45b7a087270a10ed3, type: 3}
@@ -7174,7 +7402,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 2308335276659092541, guid: 6676286615e187942832ca6a088be1b0,
+      objectReference: {fileID: 1599939154044617612, guid: 6676286615e187942832ca6a088be1b0,
         type: 3}
     - target: {fileID: 5955861217192760309, guid: f5b9368ba44b0db45b7a087270a10ed3,
         type: 3}
@@ -7235,6 +7463,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cell (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7636882425927717103, guid: f5b9368ba44b0db45b7a087270a10ed3,
+        type: 3}
+      propertyPath: myColIndex
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5b9368ba44b0db45b7a087270a10ed3, type: 3}
@@ -7336,7 +7569,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 2308335276659092541, guid: 6676286615e187942832ca6a088be1b0,
+      objectReference: {fileID: 1599939154044617612, guid: 6676286615e187942832ca6a088be1b0,
         type: 3}
     - target: {fileID: 5955861217192760309, guid: f5b9368ba44b0db45b7a087270a10ed3,
         type: 3}
@@ -7582,6 +7815,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cell (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 7636882425927717103, guid: f5b9368ba44b0db45b7a087270a10ed3,
+        type: 3}
+      propertyPath: myRowIndex
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5b9368ba44b0db45b7a087270a10ed3, type: 3}
 --- !u!4 &1944663710 stripped
@@ -7682,6 +7920,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cell (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7636882425927717103, guid: f5b9368ba44b0db45b7a087270a10ed3,
+        type: 3}
+      propertyPath: myColIndex
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7636882425927717103, guid: f5b9368ba44b0db45b7a087270a10ed3,
+        type: 3}
+      propertyPath: myRowIndex
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5b9368ba44b0db45b7a087270a10ed3, type: 3}
@@ -8050,6 +8298,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cell (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7636882425927717103, guid: f5b9368ba44b0db45b7a087270a10ed3,
+        type: 3}
+      propertyPath: myColIndex
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7636882425927717103, guid: f5b9368ba44b0db45b7a087270a10ed3,
+        type: 3}
+      propertyPath: myRowIndex
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5b9368ba44b0db45b7a087270a10ed3, type: 3}
