@@ -6,8 +6,9 @@ public class MainMenu : MonoBehaviour
     [SerializeField]
     private Transform PlayButton;
 
-    public void Click()
+    public void PlayButtonClick()
     {
+        return;
         Debug.Log("main menu >> click");
         switch (name)
         {
@@ -25,6 +26,6 @@ public class MainMenu : MonoBehaviour
     private void Play()
     {
         Debug.Log("main menu >> click >> play");
-        ManagersSingleton.Managers.CameraMovement.GoHere(Pages.Puzzle);
+        
     }
 }
