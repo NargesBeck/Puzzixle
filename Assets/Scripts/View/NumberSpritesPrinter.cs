@@ -15,12 +15,12 @@ public class NumberSpritesPrinter : MonoBehaviour
     [SerializeField]
     private Sprite[] BlackNumbers = new Sprite[10];
 
-    public void Print(int number, Colors outputColor, out Sprite sprite)
+    public Sprite Print(int number, Colors outputColor)
     {
-        sprite = null;
         if (outputColor == Colors.Blue)
-            sprite = BlueNumbers[number];
+            return BlueNumbers[number];
         else if (outputColor == Colors.Black)
-            sprite = BlackNumbers[number];
+            return BlackNumbers[number];
+        return null;
     }
 }

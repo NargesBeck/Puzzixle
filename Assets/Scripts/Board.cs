@@ -7,7 +7,7 @@ public class Board : MonoBehaviour
     public BoardTypes MyType;
 
     [SerializeField]
-    List<TextMesh> RowsInfo = new List<TextMesh>();
+    List<RowColViewHandler> RowsList = new List<RowColViewHandler>();
 
     public PuzzleInfo CurrentPuzzle;
 
@@ -15,9 +15,9 @@ public class Board : MonoBehaviour
     {
         CurrentPuzzle = puzzleToApply;
         List<string> calculatedRowsInfo = SequencesInRowsToString();
-        for (int i = 0; i < RowsInfo.Count; i++)
+        for (int i = 0; i < RowsList.Count; i++)
         {
-            RowsInfo[i].text = calculatedRowsInfo[i];
+            // RowsList[i].AssignMe( ... );
         }
     }
 

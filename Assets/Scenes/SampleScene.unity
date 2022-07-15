@@ -1772,7 +1772,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MyType: 1
-  RowsInfo: []
+  RowsList: []
   CurrentPuzzle:
     Map1D: []
     LevelName: 
@@ -2003,9 +2003,8 @@ GameObject:
   - component: {fileID: 555782473}
   - component: {fileID: 555782472}
   - component: {fileID: 555782471}
-  - component: {fileID: 555782475}
-  - component: {fileID: 555782474}
   - component: {fileID: 555782476}
+  - component: {fileID: 555782474}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -2044,6 +2043,7 @@ MonoBehaviour:
   CameraMovement: {fileID: 519420030}
   PuzzleGenerator: {fileID: 555782476}
   PuzzlePageManager: {fileID: 579438012}
+  NumberSpritesPrinter: {fileID: 0}
   BoardSelectionPageManager: {fileID: 147914948}
 --- !u!4 &555782473
 Transform:
@@ -2068,22 +2068,31 @@ MonoBehaviour:
   m_GameObject: {fileID: 555782470}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd2c41c134592f043adb6dbe014aaeeb, type: 3}
+  m_Script: {fileID: 11500000, guid: 4cc08dd8e6758cc42a99e18e3a442f54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TouchDetectionEnabled: 1
---- !u!114 &555782475
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 555782470}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fbaa368cbfe3644ea9876e10db2f718, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  BlueNumbers:
+  - {fileID: -1699957829499993078, guid: 6676286615e187942832ca6a088be1b0, type: 3}
+  - {fileID: 1417603272402123925, guid: 6676286615e187942832ca6a088be1b0, type: 3}
+  - {fileID: 6392726440999945240, guid: 6676286615e187942832ca6a088be1b0, type: 3}
+  - {fileID: 8399372063445796538, guid: 6676286615e187942832ca6a088be1b0, type: 3}
+  - {fileID: -5824139725659179551, guid: 6676286615e187942832ca6a088be1b0, type: 3}
+  - {fileID: -3259416613863041182, guid: 6676286615e187942832ca6a088be1b0, type: 3}
+  - {fileID: 6240886309754598805, guid: 6676286615e187942832ca6a088be1b0, type: 3}
+  - {fileID: 1428339488509821555, guid: 6676286615e187942832ca6a088be1b0, type: 3}
+  - {fileID: 5630764209028238374, guid: 6676286615e187942832ca6a088be1b0, type: 3}
+  - {fileID: -6409350911342670421, guid: 6676286615e187942832ca6a088be1b0, type: 3}
+  BlackNumbers:
+  - {fileID: 3567002879626440157, guid: 539b9dbe4a5ece240968b9f6e9cd73e0, type: 3}
+  - {fileID: -5387175371613585564, guid: 539b9dbe4a5ece240968b9f6e9cd73e0, type: 3}
+  - {fileID: -616498468635800234, guid: 539b9dbe4a5ece240968b9f6e9cd73e0, type: 3}
+  - {fileID: -6437667307380957205, guid: 539b9dbe4a5ece240968b9f6e9cd73e0, type: 3}
+  - {fileID: 1459847619907527420, guid: 539b9dbe4a5ece240968b9f6e9cd73e0, type: 3}
+  - {fileID: 8827761118200624034, guid: 539b9dbe4a5ece240968b9f6e9cd73e0, type: 3}
+  - {fileID: -5031180198967241564, guid: 539b9dbe4a5ece240968b9f6e9cd73e0, type: 3}
+  - {fileID: -281066251245053933, guid: 539b9dbe4a5ece240968b9f6e9cd73e0, type: 3}
+  - {fileID: 356111166676614077, guid: 539b9dbe4a5ece240968b9f6e9cd73e0, type: 3}
+  - {fileID: 9168564739774457796, guid: 539b9dbe4a5ece240968b9f6e9cd73e0, type: 3}
 --- !u!114 &555782476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6688,6 +6697,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1627176267}
   - component: {fileID: 1627176268}
+  - component: {fileID: 1627176269}
+  - component: {fileID: 1627176270}
   m_Layer: 0
   m_Name: Hint
   m_TagString: Untagged
@@ -6764,6 +6775,48 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1627176269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1627176266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0433441f7f2690844ba4ec8111e63669, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ActiveSprite: {fileID: 8886410996032745903, guid: 6676286615e187942832ca6a088be1b0,
+    type: 3}
+  DefaultSprite: {fileID: 7702816384283866136, guid: 6676286615e187942832ca6a088be1b0,
+    type: 3}
+--- !u!61 &1627176270
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1627176266}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 10.150214, y: 13.910001}
+    newSize: {x: 10.150214, y: 13.910001}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 10.150214, y: 13.910001}
+  m_EdgeRadius: 0
 --- !u!1 &1652179739
 GameObject:
   m_ObjectHideFlags: 0
