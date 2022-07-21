@@ -7,9 +7,9 @@ public class RowColViewHandler : MonoBehaviour
     [SerializeField]
     private SpriteRenderer[] SpriteRenderersArr = new SpriteRenderer[0];
 
-    public void AssignMe(params int[] numbers)
+    public void AssignMe(List<int> numbers)
     {
-        for (int i = 0; i < numbers.Length; i++)
+        for (int i = 0; i < numbers.Count; i++)
         {
             SpriteRenderersArr[i].sprite = ManagersSingleton.Managers.NumberSpritesPrinter.Print(numbers[i], NumberSpritesPrinter.Colors.Blue);
         }

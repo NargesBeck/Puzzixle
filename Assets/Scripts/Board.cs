@@ -14,19 +14,22 @@ public class Board : MonoBehaviour
     public void RunLevel(PuzzleInfo puzzleToApply)
     {
         CurrentPuzzle = puzzleToApply;
-        List<string> calculatedRowsInfo = SequencesInRowsToString();
+        //List<string> calculatedRowsInfo = SequencesInRowsToString();
+        List<List<int>> calculatedRowsInfo = SequencesInRowsToString();
         for (int i = 0; i < RowsList.Count; i++)
         {
-            // RowsList[i].AssignMe( ... );
+            RowsList[i].AssignMe(calculatedRowsInfo[i]);
         }
     }
 
-    private List<string> SequencesInRowsToString()
+    private List<List<int>> SequencesInRowsToString()
     {
+        List<List<int>> allRowsList = new List<List<int>>();
         List<string> output = new List<string>();
         for (int row = 0; row <= CurrentPuzzle.Map2D.GetUpperBound(0); row++)
         {
             string rowInfo = "";
+            List<int> rowInfoIntList = new List<int>();
             int seqLength = 0;
             for (int col = 0; col <= CurrentPuzzle.Map2D.GetUpperBound(1); col ++)
             {
@@ -38,14 +41,16 @@ public class Board : MonoBehaviour
                     if (rowInfo != "")
                         rowInfo += " ";
                     rowInfo += seqLength;
+                    rowInfoIntList.Add(seqLength);
                     seqLength = 0;
                 }
             }
             if (rowInfo == "")
                 rowInfo = "0";
             output.Add(rowInfo);
+            allRowsList.Add(rowInfoIntList);
         }
-        return output;
+        return allRowsList;
     }
 
     public void OnNACellClicked(int row, int col, Action<CellModes> callCellToChangeMode)
