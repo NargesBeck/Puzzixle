@@ -818,7 +818,6 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
-  - component: {fileID: 519420033}
   - component: {fileID: 519420034}
   m_Layer: 0
   m_Name: Main Camera
@@ -904,25 +903,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10, y: 0, z: -10}
+  m_LocalPosition: {x: -10, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &519420033
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd2c41c134592f043adb6dbe014aaeeb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TouchDetectionEnabled: 1
 --- !u!114 &519420034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1035,6 +1021,7 @@ GameObject:
   - component: {fileID: 555782471}
   - component: {fileID: 555782476}
   - component: {fileID: 555782474}
+  - component: {fileID: 555782475}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -1069,11 +1056,11 @@ MonoBehaviour:
   Camera: {fileID: 519420031}
   Profile: {fileID: 0}
   MainMenu: {fileID: 555782471}
-  GameManager: {fileID: 0}
+  GameManager: {fileID: 555782475}
   CameraMovement: {fileID: 519420030}
   PuzzleGenerator: {fileID: 555782476}
   PuzzlePageManager: {fileID: 579438012}
-  NumberSpritesPrinter: {fileID: 0}
+  NumberSpritesPrinter: {fileID: 555782474}
   BoardSelectionPageManager: {fileID: 147914948}
 --- !u!4 &555782473
 Transform:
@@ -1123,6 +1110,18 @@ MonoBehaviour:
   - {fileID: -281066251245053933, guid: 539b9dbe4a5ece240968b9f6e9cd73e0, type: 3}
   - {fileID: 356111166676614077, guid: 539b9dbe4a5ece240968b9f6e9cd73e0, type: 3}
   - {fileID: 9168564739774457796, guid: 539b9dbe4a5ece240968b9f6e9cd73e0, type: 3}
+--- !u!114 &555782475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 555782470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5987e2c96edcb7540babc21fcf950222, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &555782476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1269,10 +1268,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MarkCellAsMananger: {fileID: 1196278100}
-  LivesHandler: {fileID: 0}
+  LivesHandler: {fileID: 621160015}
   EmptyCellSprite: {fileID: 1599939154044617612, guid: 6676286615e187942832ca6a088be1b0,
     type: 3}
-  HintHandler: {fileID: 0}
+  HintHandler: {fileID: 1627176269}
   BoardObjects:
   - {fileID: 349544507}
   CurrentBoard: {fileID: 349544507}
@@ -1286,6 +1285,7 @@ GameObject:
   m_Component:
   - component: {fileID: 621160013}
   - component: {fileID: 621160014}
+  - component: {fileID: 621160015}
   m_Layer: 0
   m_Name: LifeSliderSprite
   m_TagString: Untagged
@@ -1347,7 +1347,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: -5301139231979263308, guid: 6676286615e187942832ca6a088be1b0,
+  m_Sprite: {fileID: 2257719399904605041, guid: 6676286615e187942832ca6a088be1b0,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1359,6 +1359,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &621160015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 621160012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4b7f573de58a8c4f82d5f1d67160253, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HeartsSpritesArr:
+  - {fileID: -3498286804240844593, guid: 6676286615e187942832ca6a088be1b0, type: 3}
+  - {fileID: 4184825905417817968, guid: 6676286615e187942832ca6a088be1b0, type: 3}
+  - {fileID: -5301139231979263308, guid: 6676286615e187942832ca6a088be1b0, type: 3}
+  - {fileID: 2257719399904605041, guid: 6676286615e187942832ca6a088be1b0, type: 3}
+  LivesRemaining: 3
 --- !u!1 &627507449
 GameObject:
   m_ObjectHideFlags: 0

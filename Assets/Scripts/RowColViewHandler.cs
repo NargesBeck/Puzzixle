@@ -10,23 +10,25 @@ public class RowColViewHandler : MonoBehaviour
     public void AssignMe(List<int> numbers)
     {
         bool isRowOrColEmpty = true;
-        for (int i = 0; i < SpriteRenderersArr.Length; i++)
+        int iNum = numbers.Count - 1;
+        for (int i = SpriteRenderersArr.Length - 1; i >= 0; i--)
         {
-            if (i < numbers.Count)
-            {
-                isRowOrColEmpty = false;
-                SpriteRenderersArr[i].enabled = true;
-                SpriteRenderersArr[i].sprite = ManagersSingleton.Managers.NumberSpritesPrinter.Print(numbers[i], NumberSpritesPrinter.Colors.Blue);
-            }
-            else
+            if (iNum < 0)
             {
                 SpriteRenderersArr[i].enabled = false;
             }
+            else
+            {
+                isRowOrColEmpty = false;
+                SpriteRenderersArr[i].enabled = true;
+                SpriteRenderersArr[i].sprite = ManagersSingleton.Managers.NumberSpritesPrinter.Print(numbers[iNum], NumberSpritesPrinter.Colors.Blue);
+            }
+            iNum--; 
         }
         if (isRowOrColEmpty)
         {
-            SpriteRenderersArr[0].enabled = true;
-            SpriteRenderersArr[0].sprite = ManagersSingleton.Managers.NumberSpritesPrinter.Print(0, NumberSpritesPrinter.Colors.Blue);
+            SpriteRenderersArr[SpriteRenderersArr.Length - 1].enabled = true;
+            SpriteRenderersArr[SpriteRenderersArr.Length - 1].sprite = ManagersSingleton.Managers.NumberSpritesPrinter.Print(0, NumberSpritesPrinter.Colors.Blue);
         }
     }
 }

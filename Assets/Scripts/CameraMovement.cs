@@ -22,6 +22,7 @@ public class CameraMovement : MonoBehaviour
 
     private void Awake()
     {
+        ManagersSingleton.Managers.GameManager.OnLifeLoss += Shake;
         transform = GetComponent<Transform>();
 
         OnFinishedGoingToNewPage = ManagersSingleton.Managers.PuzzlePageManager.DisplayPage;
@@ -88,5 +89,17 @@ public class CameraMovement : MonoBehaviour
                 break;
         }
         return new Vector3(output.x, output.y, -10);
+    }
+
+    private void Shake()
+    {
+        float intensity = 0.05f;
+        float speed = 0.1f;
+        Sequence sequence = DOTween.Sequence();
+        sequence.Append(transform.DOMove(transform.position + new Vector3(intensity, 0, 0), speed));
+        sequence.Append(transform.DOMove(transform.position + new Vector3(-intensity, 0, 0), speed));
+        sequence.Append(transform.DOMove(transform.position + new Vector3(intensity, 0, 0), speed));
+
+        sequence.Play();
     }
 }

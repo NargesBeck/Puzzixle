@@ -74,6 +74,9 @@ public class Board : MonoBehaviour
 
     private void PlayerWasWrong()
     {
+        if (ManagersSingleton.Managers.GameManager.OnLifeLoss != null)
+            ManagersSingleton.Managers.GameManager.OnLifeLoss();
+
         if (ManagersSingleton.Managers.PuzzlePageManager.LivesHandler.ReduceALife())
         {
             PlayerLost();

@@ -32,7 +32,7 @@ public class LivesHandler : MonoBehaviour
         if (LivesRemaining == 1)
             return true;
         LivesRemaining--;
-        SpriteRenderer.sprite = HeartsSpritesArr[LivesRemaining - 1];
+        SpriteRenderer.sprite = HeartsSpritesArr[LivesRemaining];
         return false;
     }
 
