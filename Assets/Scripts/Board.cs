@@ -9,45 +9,42 @@ public class Board : MonoBehaviour
     [SerializeField]
     List<RowColViewHandler> RowsList = new List<RowColViewHandler>();
 
+    [SerializeField]
+    List<RowColViewHandler> ColumnsList = new List<RowColViewHandler>();
+
     public PuzzleInfo CurrentPuzzle;
 
     public void RunLevel(PuzzleInfo puzzleToApply)
     {
         CurrentPuzzle = puzzleToApply;
-        //List<string> calculatedRowsInfo = SequencesInRowsToString();
-        List<List<int>> calculatedRowsInfo = SequencesInRowsToString();
-        for (int i = 0; i < RowsList.Count; i++)
-        {
-            RowsList[i].AssignMe(calculatedRowsInfo[i]);
-        }
+
+        List<List<int>> calculatedRowsInfo = GetSequencesLengths(true);
+        for (int i = 0; i < RowsList.Count; RowsList[i].AssignMe(calculatedRowsInfo[i]), i++);
+        List<List<int>> calculatedColsInfo = GetSequencesLengths(false);
+        for (int i = 0; i < ColumnsList.Count; ColumnsList[i].AssignMe(calculatedColsInfo[i]), i++);
     }
 
-    private List<List<int>> SequencesInRowsToString()
+    private List<List<int>> GetSequencesLengths(bool inRows)
     {
+        int iUpperBound = (inRows) ? 0 : 1;
+        int jUpperBound = (inRows) ? 1 : 0;
+
         List<List<int>> allRowsList = new List<List<int>>();
-        List<string> output = new List<string>();
-        for (int row = 0; row <= CurrentPuzzle.Map2D.GetUpperBound(0); row++)
+        for (int i = 0; i <= CurrentPuzzle.Map2D.GetUpperBound(iUpperBound); i++)
         {
-            string rowInfo = "";
             List<int> rowInfoIntList = new List<int>();
             int seqLength = 0;
-            for (int col = 0; col <= CurrentPuzzle.Map2D.GetUpperBound(1); col ++)
+            for (int j = 0; j <= CurrentPuzzle.Map2D.GetUpperBound(jUpperBound); j ++)
             {
-                if (CurrentPuzzle.Map2D[row, col].CellMode == CellModes.MarkedAsFull)
+                if (CurrentPuzzle.Map2D[i, j].CellMode == CellModes.MarkedAsFull)
                     seqLength++;
-                if ((CurrentPuzzle.Map2D[row, col].CellMode == CellModes.MarkedAsEmpty && seqLength > 0)
-                    || (col == CurrentPuzzle.Map2D.GetUpperBound(0) && seqLength > 0))
+                if ((CurrentPuzzle.Map2D[i, j].CellMode == CellModes.MarkedAsEmpty && seqLength > 0)
+                    || (j == CurrentPuzzle.Map2D.GetUpperBound(0) && seqLength > 0))
                 {
-                    if (rowInfo != "")
-                        rowInfo += " ";
-                    rowInfo += seqLength;
                     rowInfoIntList.Add(seqLength);
                     seqLength = 0;
                 }
             }
-            if (rowInfo == "")
-                rowInfo = "0";
-            output.Add(rowInfo);
             allRowsList.Add(rowInfoIntList);
         }
         return allRowsList;

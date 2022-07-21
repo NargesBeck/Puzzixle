@@ -213,9 +213,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpriteRenderersArr:
-  - {fileID: 5734547335121937132}
-  - {fileID: 924213747617296664}
   - {fileID: 2690358111287335568}
+  - {fileID: 924213747617296664}
+  - {fileID: 5734547335121937132}
 --- !u!1 &7565335861612625181
 GameObject:
   m_ObjectHideFlags: 0
