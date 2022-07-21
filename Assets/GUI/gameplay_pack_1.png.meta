@@ -74,6 +74,42 @@ TextureImporter:
   - first:
       213: 8886410996032745903
     second: hint-active
+  - first:
+      213: 5218838667289654370
+    second: anim-def2empty-0
+  - first:
+      213: -3060429160597883010
+    second: anim-def2empty-1
+  - first:
+      213: -1130537979753386704
+    second: anim-def2empty-2
+  - first:
+      213: 4200737109115204589
+    second: anim-def2empty-3
+  - first:
+      213: 1196035828212454433
+    second: anim-def2empty-4
+  - first:
+      213: 8089881071274202931
+    second: anim-def2empty-5
+  - first:
+      213: -7299428157691210375
+    second: anim-def2full-0
+  - first:
+      213: 3181429633660107652
+    second: anim-def2full-1
+  - first:
+      213: -4912147269111586369
+    second: anim-def2full-2
+  - first:
+      213: 5772330112944899762
+    second: anim-def2full-3
+  - first:
+      213: -6639027951711610282
+    second: anim-def2full-4
+  - first:
+      213: 3282632095047199681
+    second: anim-def2full-5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -678,7 +714,7 @@ TextureImporter:
         width: 991
         height: 1397
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -686,6 +722,258 @@ TextureImporter:
       bones: []
       spriteID: fa138aaf7bfd25b70800000000000000
       internalID: 8886410996032745903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim-def2empty-0
+      rect:
+        serializedVersion: 2
+        x: 6163
+        y: 3267
+        width: 994
+        height: 994
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2647fd70e1a0d6840800000000000000
+      internalID: 5218838667289654370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim-def2empty-1
+      rect:
+        serializedVersion: 2
+        x: 5145
+        y: 3278
+        width: 995
+        height: 991
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e77f05ea4eb2785d0800000000000000
+      internalID: -3060429160597883010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim-def2empty-2
+      rect:
+        serializedVersion: 2
+        x: 4139
+        y: 3274
+        width: 995
+        height: 991
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03d26bf72b58f40f0800000000000000
+      internalID: -1130537979753386704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim-def2empty-3
+      rect:
+        serializedVersion: 2
+        x: 3142
+        y: 3270
+        width: 994
+        height: 991
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de3fc9fe4240c4a30800000000000000
+      internalID: 4200737109115204589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim-def2empty-4
+      rect:
+        serializedVersion: 2
+        x: 2147
+        y: 3272
+        width: 997
+        height: 993
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1245e37bf3c299010800000000000000
+      internalID: 1196035828212454433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim-def2empty-5
+      rect:
+        serializedVersion: 2
+        x: 1130
+        y: 3270
+        width: 994
+        height: 995
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3379478e8f7054070800000000000000
+      internalID: 8089881071274202931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim-def2full-0
+      rect:
+        serializedVersion: 2
+        x: 6254
+        y: 2264
+        width: 994
+        height: 991
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 975d45db3c833ba90800000000000000
+      internalID: -7299428157691210375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim-def2full-1
+      rect:
+        serializedVersion: 2
+        x: 5210
+        y: 2264
+        width: 994
+        height: 991
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48b36385565b62c20800000000000000
+      internalID: 3181429633660107652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim-def2full-2
+      rect:
+        serializedVersion: 2
+        x: 4185
+        y: 2257
+        width: 994
+        height: 990
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb1e23c951c84dbb0800000000000000
+      internalID: -4912147269111586369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim-def2full-3
+      rect:
+        serializedVersion: 2
+        x: 3168
+        y: 2253
+        width: 994
+        height: 991
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b60f5497af6b1050800000000000000
+      internalID: 5772330112944899762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim-def2full-4
+      rect:
+        serializedVersion: 2
+        x: 2147
+        y: 2253
+        width: 994
+        height: 991
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65a1754c04f6dd3a0800000000000000
+      internalID: -6639027951711610282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim-def2full-5
+      rect:
+        serializedVersion: 2
+        x: 1137
+        y: 2245
+        width: 994
+        height: 991
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cba5919f704e8d20800000000000000
+      internalID: 3282632095047199681
       vertices: []
       indices: 
       edges: []

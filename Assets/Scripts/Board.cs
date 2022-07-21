@@ -36,9 +36,11 @@ public class Board : MonoBehaviour
             int seqLength = 0;
             for (int j = 0; j <= CurrentPuzzle.Map2D.GetUpperBound(jUpperBound); j ++)
             {
-                if (CurrentPuzzle.Map2D[i, j].CellMode == CellModes.MarkedAsFull)
+                int row = inRows ? i : j;
+                int col = inRows ? j : i;
+                if (CurrentPuzzle.Map2D[row, col].CellMode == CellModes.MarkedAsFull)
                     seqLength++;
-                if ((CurrentPuzzle.Map2D[i, j].CellMode == CellModes.MarkedAsEmpty && seqLength > 0)
+                if ((CurrentPuzzle.Map2D[row, col].CellMode == CellModes.MarkedAsEmpty && seqLength > 0)
                     || (j == CurrentPuzzle.Map2D.GetUpperBound(0) && seqLength > 0))
                 {
                     rowInfoIntList.Add(seqLength);

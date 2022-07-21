@@ -296,6 +296,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpriteRenderersArr:
-  - {fileID: 5097836073262617682}
-  - {fileID: 7216532050222450921}
   - {fileID: 7105598810012109025}
+  - {fileID: 7216532050222450921}
+  - {fileID: 5097836073262617682}

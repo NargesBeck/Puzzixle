@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 36265320505712479}
   - component: {fileID: 7636882425927717103}
   - component: {fileID: -7220157995153025667}
+  - component: {fileID: -8426963749357058729}
   m_Layer: 0
   m_Name: Cell
   m_TagString: Untagged
@@ -97,6 +98,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9f556b07f8924b47b4a7d581e1ee48d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  toEmptyClip: {fileID: 7400000, guid: 81edcc1ac08fe28428555a1afe7718d0, type: 2}
+  toFullClip: {fileID: 7400000, guid: 4c4fae20e41df744f989d3d0369b470a, type: 2}
+  emptySprite: {fileID: 8522888797729293208, guid: 6676286615e187942832ca6a088be1b0,
+    type: 3}
+  fullSprite: {fileID: 2308335276659092541, guid: 6676286615e187942832ca6a088be1b0,
+    type: 3}
   myRowIndex: 0
   myColIndex: 0
 --- !u!61 &-7220157995153025667
@@ -125,3 +132,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 9.890208, y: 9.87}
   m_EdgeRadius: 0
+--- !u!95 &-8426963749357058729
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6051888788158192264}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d654e3ce67ac3084685172439c854947, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
