@@ -37,9 +37,12 @@ public class CameraMovement : MonoBehaviour
         switch (page)
         {
             case Pages.Puzzle:
+                ManagersSingleton.Managers.PuzzlePageManager.PreparePage();
                 OnFinishedGoingToNewPage = ManagersSingleton.Managers.PuzzlePageManager.DisplayPage;
                 break;
             case Pages.BoardSelection:
+                ManagersSingleton.Managers.BoardSelectionPageManager.PreparePage();
+                OnFinishedGoingToNewPage = ManagersSingleton.Managers.BoardSelectionPageManager.DisplayPage;
                 break;
             case Pages.LevelWon:
                 break;

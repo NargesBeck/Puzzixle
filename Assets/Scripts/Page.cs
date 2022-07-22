@@ -6,4 +6,9 @@ public class Page : MonoBehaviour
     {
 
     }
+
+    public virtual void PreparePage()
+    {
+
+    }
 }
