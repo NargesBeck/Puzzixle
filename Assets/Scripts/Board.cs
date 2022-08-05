@@ -1,10 +1,13 @@
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using System;
 
 public class Board : MonoBehaviour
 {
     public BoardTypes MyType;
+
+    public Action OnPuzzleFinished;
 
     [SerializeField]
     List<RowColViewHandler> RowsList = new List<RowColViewHandler>();
@@ -14,6 +17,8 @@ public class Board : MonoBehaviour
 
     public PuzzleInfo CurrentPuzzle;
 
+    private int NumOfFullCellsInPuzzle, NumOfClickedFullCellsInPuzzle;
+
     public void RunLevel(PuzzleInfo puzzleToApply)
     {
         CurrentPuzzle = puzzleToApply;
@@ -22,6 +27,16 @@ public class Board : MonoBehaviour
         for (int i = 0; i < RowsList.Count; RowsList[i].AssignMe(calculatedRowsInfo[i]), i++);
         List<List<int>> calculatedColsInfo = GetSequencesLengths(false);
         for (int i = 0; i < ColumnsList.Count; ColumnsList[i].AssignMe(calculatedColsInfo[i]), i++);
+
+        NumOfFullCellsInPuzzle = NumOfClickedFullCellsInPuzzle = 0;
+        for (int row = 0; row < CurrentPuzzle.Map2D.GetLength(0); row++)
+        {
+            for (int col = 0; col < CurrentPuzzle.Map2D.GetLength(1); col++)
+            {
+                if (CurrentPuzzle.Map2D[row, col].CellMode == CellModes.MarkedAsFull)
+                    NumOfFullCellsInPuzzle++;
+            }
+        }
     }
 
     private List<List<int>> GetSequencesLengths(bool inRows)
@@ -54,13 +69,13 @@ public class Board : MonoBehaviour
 
     public void OnNACellClicked(int row, int col, Action<CellModes> callCellToChangeMode)
     {
-        CellModes currectCellValue = CurrentPuzzle.Map2D[row, col].CellMode;
+        CellModes correctCellValue = CurrentPuzzle.Map2D[row, col].CellMode;
 
         if (ManagersSingleton.Managers.PuzzlePageManager.IsHintActive)
         {
             PlayerUsedHint();
         }
-        else if (ManagersSingleton.Managers.PuzzlePageManager.MarkCellAsMananger.Mark != currectCellValue)
+        else if (ManagersSingleton.Managers.PuzzlePageManager.MarkCellAsMananger.Mark != correctCellValue)
         {
             PlayerWasWrong();
         }
@@ -69,7 +84,11 @@ public class Board : MonoBehaviour
             PlayerWasRight();
         }
 
-        callCellToChangeMode(currectCellValue);
+        callCellToChangeMode(correctCellValue);
+        if (correctCellValue == CellModes.MarkedAsFull)
+            NumOfClickedFullCellsInPuzzle++;
+        if (IsPuzzleFinished())
+            StartCoroutine(PlayerWon());
     }
 
     private void PlayerWasWrong()
@@ -95,5 +114,21 @@ public class Board : MonoBehaviour
     private void PlayerLost()
     {
         ManagersSingleton.Managers.CameraMovement.GoHere(Pages.LevelFailed);
+    }
+
+    private IEnumerator PlayerWon()
+    {
+        yield return new WaitForSeconds(0.5f);
+        if (OnPuzzleFinished != null)
+        {
+            OnPuzzleFinished();
+        }
+        yield return new WaitForSeconds(1.0f);
+        ManagersSingleton.Managers.CameraMovement.GoHere(Pages.LevelWon);
+    }
+
+    private bool IsPuzzleFinished()
+    {
+        return NumOfClickedFullCellsInPuzzle >= NumOfFullCellsInPuzzle;
     }
 }

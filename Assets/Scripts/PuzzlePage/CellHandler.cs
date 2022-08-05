@@ -43,6 +43,7 @@ public class CellHandler : MonoBehaviour, IPointerClickHandler
     [SerializeField]
     private Sprite fullSprite;
 
+    [SerializeField]
     private CellModes MyMode;
 
     [SerializeField]
@@ -50,6 +51,11 @@ public class CellHandler : MonoBehaviour, IPointerClickHandler
 
     [SerializeField]
     private int myColIndex;
+
+    private void Awake()
+    {
+        ManagersSingleton.Managers.PuzzlePageManager.CurrentBoard.OnPuzzleFinished += RevealBlank;
+    }
 
     private void ChangeMode(CellModes newMode)
     {
@@ -85,5 +91,14 @@ public class CellHandler : MonoBehaviour, IPointerClickHandler
         if (MyMode != CellModes.NA)
             return;
         ManagersSingleton.Managers.PuzzlePageManager.CurrentBoard.OnNACellClicked(myRowIndex, myColIndex, ChangeMode);
+    }
+
+    private void RevealBlank()
+    {
+        if (MyMode != CellModes.NA)
+            return;
+        MyMode = CellModes.MarkedAsEmpty;
+        Animator.Play(toEmptyClip.name);
+        StartCoroutine(ChangeSpriteOnChangeModeAnimationDone(0.5f));
     }
 }
