@@ -51,6 +51,7 @@ public class Profile : MonoBehaviour
         PlayerPrefs.SetInt(BoardTypes.Squ5.ToString(), -1);
         PlayerPrefs.SetInt(BoardTypes.Squ10.ToString(), -1);
         PlayerPrefs.SetInt(BoardTypes.Squ15.ToString(), -1);
+        PlayerPrefs.SetString(RECENT_BOARD_TYPE, BoardTypes.Squ5.ToString());
     }
 
     public void SaveRecentBoardType(BoardTypes type)
@@ -69,6 +70,11 @@ public class Profile : MonoBehaviour
             return BoardTypes.Squ15;
 
         throw new System.Exception("mismatch of somoe sort at GetRecentBoardType - " + recentBoard);
+    }
+
+    public bool IsLevelOpen(BoardTypes type, int levelIndex)
+    {
+        return GetLastPuzzlePlayedForThisBoard(type) + 1 >= levelIndex;
     }
 }
 public class UserProgressForEachBoard

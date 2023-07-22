@@ -209,7 +209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac13d70bfcde09247978eb4fa4ef1cf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelNumber: 0
+  LevelNumber: 0
   iconRowIndex: 0
   iconColIndex: 0
   played: {fileID: -3286399927825090738, guid: 539b9dbe4a5ece240968b9f6e9cd73e0, type: 3}
@@ -220,6 +220,7 @@ MonoBehaviour:
   - {fileID: 7847957143873041555}
   - {fileID: 3393835071284133073}
   isSelectable: 0
+  LevelStateSpriteRenderer: {fileID: 114074900812167699}
 --- !u!1 &4549159388176574703
 GameObject:
   m_ObjectHideFlags: 0

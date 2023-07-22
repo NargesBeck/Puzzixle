@@ -67,6 +67,7 @@ public class PuzzlePageManager : Page
 
     public void StartLevel(BoardTypes boardType, PuzzleInfo puzzleInfo, int index)
     {
+        ManagersSingleton.Managers.Profile.SaveRecentBoardType(boardType);
         CurrentBoard = ActivateBoard(boardType);
         PrepareLevel2DArray(boardType, ref puzzleInfo);
         CurrentBoard.RunLevel(puzzleInfo, index);
