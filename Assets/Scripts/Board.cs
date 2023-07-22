@@ -6,6 +6,7 @@ using System;
 public class Board : MonoBehaviour
 {
     public BoardTypes MyType;
+    public int MyIndexInDB;
 
     public Action OnPuzzleFinished;
 
@@ -19,8 +20,9 @@ public class Board : MonoBehaviour
 
     private int NumOfFullCellsInPuzzle, NumOfClickedFullCellsInPuzzle;
 
-    public void RunLevel(PuzzleInfo puzzleToApply)
+    public void RunLevel(PuzzleInfo puzzleToApply, int index)
     {
+        MyIndexInDB = index;
         CurrentPuzzle = puzzleToApply;
 
         List<List<int>> calculatedRowsInfo = GetSequencesLengths(true);
@@ -118,6 +120,7 @@ public class Board : MonoBehaviour
 
     private IEnumerator PlayerWon()
     {
+        ManagersSingleton.Managers.Profile.SavePlayedPuzzle(MyType, MyIndexInDB);
         yield return new WaitForSeconds(0.5f);
         if (OnPuzzleFinished != null)
         {

@@ -25,18 +25,51 @@ public class PuzzlePageManager : Page
         }
     }
 
-    public override void DisplayPage()
+    private PuzzlesScriptableObject db;
+    private PuzzlesScriptableObject DB
     {
-        var DB = Resources.Load<PuzzlesScriptableObject>("Puzzles");
-
-        StartLevel(DB.PuzzlesPool[0].BoardType, DB.PuzzlesPool[0].PuzzlesList[0]);
+        get
+        {
+            if (db == null)
+                db = Resources.Load<PuzzlesScriptableObject>("Puzzles");
+            return db;
+        }
     }
 
-    public void StartLevel(BoardTypes boardType, PuzzleInfo puzzleInfo)
+    private bool IsNextSet = false;
+    private int NextPuzzleIndex;
+    private BoardTypes NextBoardType;
+
+    public void SetThisLevelNext(BoardTypes boardType, int index)
+    {
+        IsNextSet = true;
+        NextPuzzleIndex = index;
+        NextBoardType = boardType;
+    }
+
+    public override void DisplayPage()
+    {
+        //StartLevel(DB.PuzzlesPool[0].BoardType, DB.PuzzlesPool[0].PuzzlesList[0]);
+        if (IsNextSet)
+        {
+            var puzzle = DB.PuzzlesPool.Find(x => x.BoardType == NextBoardType).PuzzlesList[NextPuzzleIndex];
+            StartLevel(NextBoardType, puzzle, NextPuzzleIndex);
+        }
+        else
+        {
+            BoardTypes boardType = ManagersSingleton.Managers.Profile.GetRecentBoardType();
+            int puzzleIndex = ManagersSingleton.Managers.Profile.GetLastPuzzlePlayedForThisBoard(boardType);
+            var puzzle = DB.PuzzlesPool.Find(x => x.BoardType == boardType).PuzzlesList[puzzleIndex];
+            StartLevel(boardType, puzzle, puzzleIndex);
+        }
+        IsNextSet = false;
+    }
+
+    public void StartLevel(BoardTypes boardType, PuzzleInfo puzzleInfo, int index)
     {
         CurrentBoard = ActivateBoard(boardType);
         PrepareLevel2DArray(boardType, ref puzzleInfo);
-        CurrentBoard.RunLevel(puzzleInfo);
+        CurrentBoard.RunLevel(puzzleInfo, index);
     }
 
     private Board ActivateBoard(BoardTypes type)

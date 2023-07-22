@@ -16,7 +16,7 @@ public class CameraMovement : MonoBehaviour
     private new Transform transform;
     private bool ZoomedOut = false;
 
-    public Action OnFinishedGoingToNewPage;
+    private Action OnFinishedGoingToNewPage;
 
     private bool IsSwitchingPages;
 
