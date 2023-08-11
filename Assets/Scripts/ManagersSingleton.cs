@@ -25,6 +25,8 @@ public class ManagersSingleton : MonoBehaviour
     public CameraMovement CameraMovement;
     public PuzzleGenerator PuzzleGenerator;
     public PuzzlePageManager PuzzlePageManager;
+    public LevelEndPageManager LevelWonPageManager;
+    public LevelEndPageManager LevelLostPageManager;
     public NumberSpritesPrinter NumberSpritesPrinter;
     public BoardSelectionPageManager BoardSelectionPageManager;
 }
