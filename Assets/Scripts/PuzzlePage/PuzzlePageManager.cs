@@ -11,8 +11,9 @@ public class PuzzlePageManager : Page
     [SerializeField]
     private HintHandler HintHandler;
     [SerializeField]
-    private List<Board> BoardObjects = new List<Board>();
+    private List<GameObject> BoardObjects = new List<GameObject>();
     
+    private GameObject BoardObject;
     public Board CurrentBoard;
 
     public bool IsHintActive
@@ -58,7 +59,7 @@ public class PuzzlePageManager : Page
         else
         {
             BoardTypes boardType = ManagersSingleton.Managers.Profile.GetRecentBoardType();
-            int puzzleIndex = ManagersSingleton.Managers.Profile.GetLastPuzzlePlayedForThisBoard(boardType);
+            int puzzleIndex = ManagersSingleton.Managers.Profile.GetLastPuzzlePlayedForThisBoard(boardType) + 1;
             var puzzle = DB.PuzzlesPool.Find(x => x.BoardType == boardType).PuzzlesList[puzzleIndex];
             StartLevel(boardType, puzzle, puzzleIndex);
         }
@@ -75,20 +76,17 @@ public class PuzzlePageManager : Page
 
     private Board ActivateBoard(BoardTypes type)
     {
-        int indexToReturn = 0;
+        Destroy(BoardObject);
         for (int iBoardObj = 0; iBoardObj < BoardObjects.Count; iBoardObj++)
         {
-            if (BoardObjects[iBoardObj].MyType == type)
+            if (BoardObjects[iBoardObj].GetComponent<Board>().MyType == type)
             {
-                indexToReturn = iBoardObj;
-                BoardObjects[iBoardObj].gameObject.SetActive(true);
-            }
-            else
-            {
-                BoardObjects[iBoardObj].gameObject.SetActive(false);
+                BoardObject = Instantiate(BoardObjects[iBoardObj], this.transform);
+                BoardObject.SetActive(true);
+                return BoardObject.GetComponent<Board>();
             }
         }
-        return BoardObjects[indexToReturn];
+        return null;
     }
 
     private void PrepareLevel2DArray(BoardTypes boardType, ref PuzzleInfo puzzleInfo)
