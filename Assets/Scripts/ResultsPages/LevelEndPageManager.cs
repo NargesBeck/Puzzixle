@@ -1,18 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class LevelEndPageManager : Page
 {
     [SerializeField]
     private List<SpriteRenderer> NumberSpriteRenderers = new List<SpriteRenderer>();
 
+    [SerializeField]
+    private bool GameOver;
+
     public override void PreparePage()
     {
         BoardTypes boardType = ManagersSingleton.Managers.Profile.GetRecentBoardType();
         int levelNumber = ManagersSingleton.Managers.Profile.GetLastPuzzlePlayedForThisBoard(boardType) + 1;
-
+        if (GameOver) levelNumber++;
 
         int levelNumView = levelNumber + 1;
         int n100 = levelNumView / 100;

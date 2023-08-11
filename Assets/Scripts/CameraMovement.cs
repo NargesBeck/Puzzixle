@@ -45,8 +45,10 @@ public class CameraMovement : MonoBehaviour
                 OnFinishedGoingToNewPage = ManagersSingleton.Managers.BoardSelectionPageManager.DisplayPage;
                 break;
             case Pages.LevelWon:
+                ManagersSingleton.Managers.LevelWonPageManager.PreparePage();
                 break;
             case Pages.LevelFailed:
+                ManagersSingleton.Managers.LevelLostPageManager.PreparePage();
                 break;
         }
 
