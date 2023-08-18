@@ -30,6 +30,17 @@ public class LevelIcons : MonoBehaviour, IPointerClickHandler
     {
         LevelNumber = (iconRowIndex * 5 + iconColIndex) + ManagersSingleton.Managers.BoardSelectionPageManager.ScrolledViewLevelStartingFrom;
         int levelNumView = LevelNumber + 1;
+
+        if (levelNumView <= ManagersSingleton.Managers.GameManager.MaxLevelNumber)
+        {
+            gameObject.SetActive(true);
+        }
+        else
+        {
+            gameObject.SetActive(false);
+            return;
+        }
+
         int n100 = levelNumView / 100;
         int n10 = (levelNumView - n100 * 100) / 10;
         int n1 = levelNumView - n100 * 100 - n10 * 10;
@@ -51,9 +62,14 @@ public class LevelIcons : MonoBehaviour, IPointerClickHandler
 
     private void SetStateSprite()
     {
-        bool open = ManagersSingleton.Managers.Profile.IsLevelOpen(ManagersSingleton.Managers.BoardSelectionPageManager.CurrentBoardType, LevelNumber);
-        
-        LevelStateSpriteRenderer.sprite = open ? toPlay : locked;
+        bool open = ManagersSingleton.Managers.Profile.IsLevelOpen(ManagersSingleton.Managers.BoardSelectionPageManager.CurrentBoardType, LevelNumber, out bool shine);
+
+        if (shine)
+            LevelStateSpriteRenderer.sprite = toPlay;
+        else if (open)
+            LevelStateSpriteRenderer.sprite = played;
+        else
+            LevelStateSpriteRenderer.sprite = locked;
     }
 
     public void OnPointerClick(PointerEventData eventData)

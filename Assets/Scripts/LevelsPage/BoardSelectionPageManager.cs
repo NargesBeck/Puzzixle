@@ -35,6 +35,7 @@ public class BoardSelectionPageManager : Page
             case BoardTypes.Squ15: CurrentBoardType = BoardTypes.Squ5; break;
         }
         SetTypeSprite();
+        RefreshOnBoardTypeChange();
     }
 
     public void ToggleBackward()
@@ -46,6 +47,13 @@ public class BoardSelectionPageManager : Page
             case BoardTypes.Squ15: CurrentBoardType = BoardTypes.Squ10; break;
         }
         SetTypeSprite();
+        RefreshOnBoardTypeChange();
+    }
+
+    private void RefreshOnBoardTypeChange()
+    {
+        ScrolledViewLevelStartingFrom = 0;
+        OnReAssignLevelIcons?.Invoke();
     }
 
     private void SetTypeSprite()
@@ -67,6 +75,14 @@ public class BoardSelectionPageManager : Page
     public void ClickedScroll(bool upward)
     {
         int increment = (upward ? -1 : 1) * LevelIncrementPerScrollClick;
+        int startingFrom = ScrolledViewLevelStartingFrom + increment;
+
+        if (upward && startingFrom < 0)
+            return;
+        int upperBound = ManagersSingleton.Managers.GameManager.MaxLevelNumber - 1;
+        if (!upward && startingFrom > upperBound)
+            return;
+
         ScrolledViewLevelStartingFrom += increment;
         OnReAssignLevelIcons?.Invoke();
     }

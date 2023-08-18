@@ -72,9 +72,11 @@ public class Profile : MonoBehaviour
         throw new System.Exception("mismatch of somoe sort at GetRecentBoardType - " + recentBoard);
     }
 
-    public bool IsLevelOpen(BoardTypes type, int levelIndex)
+    public bool IsLevelOpen(BoardTypes type, int levelIndex, out bool isTheLastOpenLevel)
     {
-        return GetLastPuzzlePlayedForThisBoard(type) + 1 >= levelIndex;
+        int level = GetLastPuzzlePlayedForThisBoard(type);
+        isTheLastOpenLevel = level + 1 == levelIndex; 
+        return level + 1 >= levelIndex;
     }
 }
 public class UserProgressForEachBoard
