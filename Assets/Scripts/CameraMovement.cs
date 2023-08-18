@@ -25,7 +25,7 @@ public class CameraMovement : MonoBehaviour
         ManagersSingleton.Managers.GameManager.OnLifeLoss += Shake;
         transform = GetComponent<Transform>();
 
-        OnFinishedGoingToNewPage = ManagersSingleton.Managers.PuzzlePageManager.DisplayPage;
+        //OnFinishedGoingToNewPage = ManagersSingleton.Managers.PuzzlePageManager.DisplayPage;
         GoHere(Pages.MainMenu);
     }
 
@@ -39,6 +39,9 @@ public class CameraMovement : MonoBehaviour
             case Pages.Puzzle:
                 ManagersSingleton.Managers.PuzzlePageManager.PreparePage();
                 OnFinishedGoingToNewPage = ManagersSingleton.Managers.PuzzlePageManager.DisplayPage;
+                //if (OnFinishedGoingToNewPage != null)
+                //    OnFinishedGoingToNewPage();
+                //return;
                 break;
             case Pages.BoardSelection:
                 ManagersSingleton.Managers.BoardSelectionPageManager.PreparePage();
@@ -46,20 +49,24 @@ public class CameraMovement : MonoBehaviour
                 break;
             case Pages.LevelWon:
                 ManagersSingleton.Managers.LevelWonPageManager.PreparePage();
+                OnFinishedGoingToNewPage = ManagersSingleton.Managers.LevelWonPageManager.DisplayPage;
                 break;
             case Pages.LevelFailed:
                 ManagersSingleton.Managers.LevelLostPageManager.PreparePage();
+                OnFinishedGoingToNewPage = ManagersSingleton.Managers.LevelLostPageManager.DisplayPage;
                 break;
         }
 
         CurrentPage = page;
         IsSwitchingPages = true;
         ZoomInOut();
+        transform.DOKill();
         transform.DOMove(GetPagePinPos(page), 1, false).OnComplete(ZoomInOut);
     }
 
     public void ZoomInOut()
     {
+        ManagersSingleton.Managers.Camera.DOKill();
         ManagersSingleton.Managers.Camera.DOOrthoSize((ZoomedOut) ? 5 : 5.5f, 0.5f).OnComplete(FinishedGoingToNewPage);
         ZoomedOut = !ZoomedOut;
     }
