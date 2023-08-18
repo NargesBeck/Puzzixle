@@ -169,12 +169,24 @@ public class PuzzlesEditor : EditorWindow
                 Draw10x10();
                 break;
             case BoardTypes.Squ15:
+                Draw15x15();
                 break;
         }
 
         EditorGUI.EndDisabledGroup();
         EditorGUILayout.EndVertical();
         GUILayout.EndArea();
+    }
+
+    private void Draw15x15()
+    {
+        int cellWidth = 17;
+        int cellHeight = 13;
+        int boardSize = PuzzlePageManager.GetBoardSizeFromBoardEnum(CurrentBoardPool.BoardType);
+        if (CurrentPuzzle.Map1D == null)
+            CurrentPuzzle.Map1D = new Cell[boardSize * boardSize];
+
+        DrawSquareBoardCells(boardSize, cellWidth, cellHeight);
     }
 
     private void Draw10x10()
@@ -233,6 +245,4 @@ public class PuzzlesEditor : EditorWindow
             GUILayout.EndHorizontal();
         }
     }
-
-
 }

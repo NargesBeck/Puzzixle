@@ -1,6 +1,6 @@
-﻿using System.Collections;
+﻿using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 public class PuzzleGenerator : MonoBehaviour
 {
@@ -46,7 +46,7 @@ public class PuzzleGenerator : MonoBehaviour
             seqValue = !seqValue;
             for (int iRow = lastSeqEndedAt; iRow < lastSeqEndedAt + seqLength; iRow++)
             {
-                if (iRow >= size - 1)
+                if (iRow >= size)
                     return row;
 
                 row[iRow] = seqValue;
