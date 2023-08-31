@@ -24,7 +24,6 @@ public class CameraMovement : MonoBehaviour
     {
         ManagersSingleton.Managers.GameManager.OnLifeLoss += Shake;
         transform = GetComponent<Transform>();
-        ManagersSingleton.Managers.Profile.ResetPlayerProgress();
 
         //OnFinishedGoingToNewPage = ManagersSingleton.Managers.PuzzlePageManager.DisplayPage;
         GoHere(Pages.MainMenu);
