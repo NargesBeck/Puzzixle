@@ -121,12 +121,12 @@ public class Board : MonoBehaviour
     private IEnumerator PlayerWon()
     {
         ManagersSingleton.Managers.Profile.SavePlayedPuzzle(MyType, MyIndexInDB);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.1f);
         if (OnPuzzleFinished != null)
         {
             OnPuzzleFinished();
         }
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(0.1f);
         ManagersSingleton.Managers.CameraMovement.GoHere(Pages.LevelWon);
     }
 

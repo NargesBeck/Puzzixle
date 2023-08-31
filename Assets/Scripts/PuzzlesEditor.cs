@@ -39,8 +39,19 @@ public class PuzzlesEditor : EditorWindow
 
     private void OnGUI()
     {
+        Apply();
         DrawFirstColumn();
         DrawSecondColumn();
+    }
+
+    private void Apply()
+    {
+        var objectDB = Resources.Load<PuzzlesScriptableObject>("Puzzles");
+        if (objectDB != null)
+        {
+            EditorUtility.SetDirty(objectDB);
+            PuzzlesPool = objectDB.PuzzlesPool;
+        }
     }
     
     private void DrawFirstColumn()

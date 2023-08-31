@@ -15,7 +15,7 @@ public class LevelIcons : MonoBehaviour, IPointerClickHandler
     [SerializeField]
     private SpriteRenderer[] numberSpriteRenderers;
 
-    [SerializeField]
+    //[SerializeField]
     private bool isSelectable;
 
     [SerializeField]
@@ -63,7 +63,7 @@ public class LevelIcons : MonoBehaviour, IPointerClickHandler
     private void SetStateSprite()
     {
         bool open = ManagersSingleton.Managers.Profile.IsLevelOpen(ManagersSingleton.Managers.BoardSelectionPageManager.CurrentBoardType, LevelNumber, out bool shine);
-
+        isSelectable = open || shine;
         if (shine)
             LevelStateSpriteRenderer.sprite = toPlay;
         else if (open)

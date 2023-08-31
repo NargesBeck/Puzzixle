@@ -48,9 +48,8 @@ public class PuzzlePageManager : Page
         NextBoardType = boardType;
     }
 
-    public override void DisplayPage()
+    public override void PreparePage()
     {
-        //StartLevel(DB.PuzzlesPool[0].BoardType, DB.PuzzlesPool[0].PuzzlesList[0]);
         if (IsNextSet)
         {
             var puzzle = DB.PuzzlesPool.Find(x => x.BoardType == NextBoardType).PuzzlesList[NextPuzzleIndex];
@@ -64,6 +63,10 @@ public class PuzzlePageManager : Page
             StartLevel(boardType, puzzle, puzzleIndex);
         }
         IsNextSet = false;
+    }
+
+    public override void DisplayPage()
+    {    
     }
 
     public void StartLevel(BoardTypes boardType, PuzzleInfo puzzleInfo, int index)
