@@ -91,11 +91,11 @@ public class Profile : MonoBehaviour
          return UserProfileData.RecentBoardType;
     }
 
-    public bool IsLevelOpen(BoardTypes type, int levelIndex, out bool isTheLastOpenLevel)
+    public bool IsLevelOpen(BoardTypes type, int levelIndex)
     {
-        int level = GetLastPuzzlePlayedForThisBoard(type);
-        isTheLastOpenLevel = level + 1 == levelIndex; 
-        return level + 1 >= levelIndex;
+        int lastlevel = GetLastPuzzlePlayedForThisBoard(type);
+        //isTheLastOpenLevel = level + 1 == levelIndex; 
+        return lastlevel + 1 >= levelIndex;
     }
 }
 

@@ -1,38 +1,35 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LivesHandler : MonoBehaviour
 {
     private const int MaxLives = 3;
 
-    [SerializeField]
-    private Sprite[] HeartsSpritesArr;
+    [HideInInspector] public int LivesRemaining = 3;
 
-    public int LivesRemaining = 3;
-
-    private SpriteRenderer spriteRenderer;
-    private SpriteRenderer SpriteRenderer
+    private Slider slider;
+    private Slider Slider
     {
         get
         {
-            if (spriteRenderer == null)
+            if (slider == null)
             {
-                spriteRenderer = GetComponent<SpriteRenderer>();
+                slider = GetComponent<Slider>();
             }
-            return spriteRenderer;
+            return slider;
         }
     }
 
     /// <summary>
     /// Will return TRUE if player has ran out of lives
     /// </summary>
-    /// <returns></returns>
     public bool ReduceALife()
     {
         Debug.Log("PLAYER IS WRONG");
         if (LivesRemaining == 1)
             return true;
         LivesRemaining--;
-        SpriteRenderer.sprite = HeartsSpritesArr[LivesRemaining];
+        Slider.value = (float)LivesRemaining / MaxLives;
         return false;
     }
 

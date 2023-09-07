@@ -6,7 +6,7 @@ public class PuzzlePageManager : Page
 {
     public MarkCellAsMananger MarkCellAsMananger;
     public LivesHandler LivesHandler;
-    public Sprite EmptyCellSprite;
+    //public Sprite EmptyCellSprite;
 
     [SerializeField]
     private HintHandler HintHandler;
@@ -122,5 +122,15 @@ public class PuzzlePageManager : Page
             default:
                 return 10;
         }
+    }
+
+    public int GetCountLevels(BoardTypes boardType)
+    {
+        return DB.PuzzlesPool.Find(x => x.BoardType == boardType).PuzzlesList.Count;
+    }
+
+    public void HidePuzzle()
+    {
+        BoardObject?.SetActive(false);
     }
 }

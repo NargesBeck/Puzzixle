@@ -1,8 +1,8 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
 using DG.Tweening;
+using UnityEngine.UI;
 
-public class HintHandler : MonoBehaviour, IPointerClickHandler
+public class HintHandler : MonoBehaviour
 {
     public bool HintIsActive { get; private set; }
     private int NumHintsLeft = 10;
@@ -10,32 +10,32 @@ public class HintHandler : MonoBehaviour, IPointerClickHandler
     [SerializeField]
     private Sprite ActiveSprite, DefaultSprite;
 
-    private SpriteRenderer spriteRenderer;
-    private SpriteRenderer SpriteRenderer
+    private Image image;
+    private Image Image
     {
         get
         {
-            if (spriteRenderer == null)
-                spriteRenderer = GetComponent<SpriteRenderer>();
-            return spriteRenderer;
+            if (image == null)
+                image = GetComponent<Image>();
+            return image;
         }
     }
 
-    public void OnPointerClick(PointerEventData eventData)
+    public void OnHintClick()
     {
         if (HintIsActive)
         {
             HintIsActive = false;
-            SpriteRenderer.DOFade(0, 0);
-            SpriteRenderer.sprite = DefaultSprite;
-            SpriteRenderer.DOFade(1, 0.25f);
+            Image.DOFade(0, 0);
+            Image.sprite = DefaultSprite;
+            Image.DOFade(1, 0.25f);
         }
         else if (NumHintsLeft > 0)
         {
             HintIsActive = true;
-            SpriteRenderer.DOFade(0, 0);
-            SpriteRenderer.sprite = ActiveSprite;
-            SpriteRenderer.DOFade(1, 0.25f);
+            Image.DOFade(0, 0);
+            Image.sprite = ActiveSprite;
+            Image.DOFade(1, 0.25f);
         }
     }
 

@@ -1,31 +1,16 @@
-﻿using DG.Tweening;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
-using UnityEngine.EventSystems;
 
-public class MarkCellAsMananger : MonoBehaviour, IPointerClickHandler
+public class MarkCellAsMananger : MonoBehaviour
 {
     private const float DOTweenDuration = 0.25f;
 
-    SpriteRenderer spriteRenderer;
-    private SpriteRenderer SpriteRenderer
-    {
-        get
-        {
-            if (spriteRenderer == null)
-            {
-                spriteRenderer = GetComponent<SpriteRenderer>();
-            }
-            return spriteRenderer;
-        }
-        set
-        {
-            spriteRenderer = value;
-        }
-    }
+    [SerializeField]
+    private Image ToggleImage;
 
     [SerializeField]
-    Sprite Empty, Full;
+    private Sprite Empty, Full;
 
     public CellModes Mark = CellModes.MarkedAsEmpty;
     private bool TouchDetectionEnabled = true;
@@ -36,7 +21,7 @@ public class MarkCellAsMananger : MonoBehaviour, IPointerClickHandler
         TouchDetectionEnabled = true;
     }
 
-    public void OnPointerClick(PointerEventData eventData)
+    public void OnToggleClick()
     {
         Debug.Log("MarkAS");
 
@@ -46,21 +31,23 @@ public class MarkCellAsMananger : MonoBehaviour, IPointerClickHandler
         TouchDetectionEnabled = false;
         StartCoroutine(UnlockTouchAfterClickWithDelay());
 
-        if (SpriteRenderer.sprite == Empty)
+        if (ToggleImage.sprite == Empty)
         {
             Debug.Log("MarkCellAsMananger >> == Empty");
             Mark = CellModes.MarkedAsFull;
-            SpriteRenderer.DOFade(0, 0);
-            SpriteRenderer.sprite = Full;
-            SpriteRenderer.DOFade(1, DOTweenDuration);
+            ToggleImage.sprite = Full;
+            //SpriteRenderer.DOFade(0, 0);
+            //SpriteRenderer.sprite = Full;
+            //SpriteRenderer.DOFade(1, DOTweenDuration);
         }
         else
         {
             Debug.Log("MarkCellAsMananger >> == Full");
             Mark = CellModes.MarkedAsEmpty;
-            SpriteRenderer.DOFade(0, 0);
-            SpriteRenderer.sprite = Empty;
-            SpriteRenderer.DOFade(1, DOTweenDuration);
+            ToggleImage.sprite = Empty;
+            //SpriteRenderer.DOFade(0, 0);
+            //SpriteRenderer.sprite = Empty;
+            //SpriteRenderer.DOFade(1, DOTweenDuration);
         }
     }
 }

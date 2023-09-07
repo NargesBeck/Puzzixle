@@ -1,9 +1,8 @@
 ﻿using DG.Tweening;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using System.Collections;
 
-public class CellHandler : MonoBehaviour, IPointerClickHandler
+public class CellHandler : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
     private SpriteRenderer SpriteRenderer
@@ -86,7 +85,7 @@ public class CellHandler : MonoBehaviour, IPointerClickHandler
         }
     }
 
-    public void OnPointerClick(PointerEventData eventData)
+    public void OnLevelIconClick()
     {
         if (MyMode != CellModes.NA)
             return;

@@ -115,7 +115,7 @@ public class Board : MonoBehaviour
 
     private void PlayerLost()
     {
-        ManagersSingleton.Managers.CameraMovement.GoHere(Pages.LevelFailed);
+        ManagersSingleton.Managers.PageTurner.GoToPage(Pages.LevelFailed);
     }
 
     private IEnumerator PlayerWon()
@@ -127,7 +127,7 @@ public class Board : MonoBehaviour
             OnPuzzleFinished();
         }
         yield return new WaitForSeconds(0.1f);
-        ManagersSingleton.Managers.CameraMovement.GoHere(Pages.LevelWon);
+        ManagersSingleton.Managers.PageTurner.GoToPage(Pages.LevelWon);
     }
 
     private bool IsPuzzleFinished()

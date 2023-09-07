@@ -1,10 +1,10 @@
 ﻿using DG.Tweening;
 using UnityEngine;
 using System;
-public enum Pages
-{
-    MainMenu, Puzzle, BoardSelection, LevelWon, LevelFailed
-}
+//public enum Pages
+//{
+//    MainMenu, Puzzle, BoardSelection, LevelWon, LevelFailed
+//}
 
 public class CameraMovement : MonoBehaviour
 {

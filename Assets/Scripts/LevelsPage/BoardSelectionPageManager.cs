@@ -1,41 +1,32 @@
-using System;
 using UnityEngine;
+using UnityEngine.UI;
+using System.Collections;
 
 public class BoardSelectionPageManager : Page
 {
-    public Action OnReAssignLevelIcons;
-    public int ScrolledViewLevelStartingFrom {get; private set;}
-    private int LevelIncrementPerScrollClick = 35;
+    [SerializeField] private Text BoardTypeText;
 
     public BoardTypes CurrentBoardType;
-
-    [SerializeField]
-    private SpriteRenderer TypeSpriteRenderer;
-
-    [SerializeField]
-    private Sprite Tiny, Medium, Huge;
-
-    public override void DisplayPage()
-    {
-        
-    }
+    public GameObject LevelIconPrefab;
+    public GameObject LevelIconsParent;
+    public GameObject[] LevelIconsArr;
 
     public override void PreparePage()
     {
         CurrentBoardType = ManagersSingleton.Managers.Profile.GetRecentBoardType();
-        OnReAssignLevelIcons?.Invoke();
+        UpdateScrollableLevelIcons();
     }
 
     public void ToggleForward()
     {
-        switch(CurrentBoardType)
+        switch (CurrentBoardType)
         {
             case BoardTypes.Squ5: CurrentBoardType = BoardTypes.Squ10; break;
             case BoardTypes.Squ10: CurrentBoardType = BoardTypes.Squ15; break;
             case BoardTypes.Squ15: CurrentBoardType = BoardTypes.Squ5; break;
         }
-        SetTypeSprite();
-        RefreshOnBoardTypeChange();
+        SetTypeText();
+        UpdateScrollableLevelIcons();
     }
 
     public void ToggleBackward()
@@ -46,44 +37,44 @@ public class BoardSelectionPageManager : Page
             case BoardTypes.Squ10: CurrentBoardType = BoardTypes.Squ5; break;
             case BoardTypes.Squ15: CurrentBoardType = BoardTypes.Squ10; break;
         }
-        SetTypeSprite();
-        RefreshOnBoardTypeChange();
+        SetTypeText();
+        UpdateScrollableLevelIcons();
     }
 
-    private void RefreshOnBoardTypeChange()
-    {
-        ScrolledViewLevelStartingFrom = 0;
-        OnReAssignLevelIcons?.Invoke();
-    }
-
-    private void SetTypeSprite()
+    private void SetTypeText()
     {
         switch (CurrentBoardType)
         {
-            case BoardTypes.Squ5: TypeSpriteRenderer.sprite = Tiny ; break;
-            case BoardTypes.Squ10: TypeSpriteRenderer.sprite = Medium; break;
-            case BoardTypes.Squ15: TypeSpriteRenderer.sprite = Huge; break;
+            case BoardTypes.Squ5: BoardTypeText.text = "Tiny"; break;
+            case BoardTypes.Squ10: BoardTypeText.text = "Medium"; break;
+            case BoardTypes.Squ15: BoardTypeText.text = "Huge"; break;
         }
     }
 
     public void ClickedLevelIcon(int levelIndex)
     {
         ManagersSingleton.Managers.PuzzlePageManager.SetThisLevelNext(CurrentBoardType, levelIndex);
-        ManagersSingleton.Managers.CameraMovement.GoHere(Pages.Puzzle);
+        ManagersSingleton.Managers.PageTurner.GoToPage(Pages.Puzzle);
     }
 
-    public void ClickedScroll(bool upward)
+    private void UpdateScrollableLevelIcons()
     {
-        int increment = (upward ? -1 : 1) * LevelIncrementPerScrollClick;
-        int startingFrom = ScrolledViewLevelStartingFrom + increment;
+        int count = ManagersSingleton.Managers.PuzzlePageManager.GetCountLevels(CurrentBoardType);
+        for (int i = 0; i < LevelIconsArr.Length; i++)
+        {
+            if (i < count)
+            {
+                LevelIconsArr[i].SetActive(true);
 
-        if (upward && startingFrom < 0)
-            return;
-        int upperBound = ManagersSingleton.Managers.GameManager.MaxLevelNumber - 1;
-        if (!upward && startingFrom > upperBound)
-            return;
+                int lastlevel = ManagersSingleton.Managers.Profile.GetLastPuzzlePlayedForThisBoard(CurrentBoardType);
+                bool isOpen = lastlevel + 1 >= i;
 
-        ScrolledViewLevelStartingFrom += increment;
-        OnReAssignLevelIcons?.Invoke();
+                LevelIconsArr[i].GetComponent<LevelIcons>().AssignMe(i + 1, isOpen);
+            }
+            else
+            {
+                LevelIconsArr[i].SetActive(false);
+            }
+        }
     }
 }
