@@ -6,7 +6,7 @@ using System.Collections.Generic;
 public class RowColViewHandler : MonoBehaviour
 {
     [SerializeField]
-    private Text SequencesText;
+    private TextMesh SequencesText;
 
     private enum SequencesTextSeperators { Space, NewLine }
 

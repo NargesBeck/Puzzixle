@@ -6,8 +6,9 @@ public class PuzzlePageManager : Page
 {
     public MarkCellAsMananger MarkCellAsMananger;
     public LivesHandler LivesHandler;
-    //public Sprite EmptyCellSprite;
 
+    [SerializeField]
+    private GameObject CongratsMessage, OhNoMessage, PuzzlesParent;
     [SerializeField]
     private HintHandler HintHandler;
     [SerializeField]
@@ -63,6 +64,9 @@ public class PuzzlePageManager : Page
             StartLevel(boardType, puzzle, puzzleIndex);
         }
         IsNextSet = false;
+
+        OhNoMessage.SetActive(false);
+        CongratsMessage.SetActive(false);
     }
 
     public override void DisplayPage()
@@ -79,12 +83,13 @@ public class PuzzlePageManager : Page
 
     private Board ActivateBoard(BoardTypes type)
     {
+        PuzzlesParent.SetActive(true);
         Destroy(BoardObject);
         for (int iBoardObj = 0; iBoardObj < BoardObjects.Count; iBoardObj++)
         {
             if (BoardObjects[iBoardObj].GetComponent<Board>().MyType == type)
             {
-                BoardObject = Instantiate(BoardObjects[iBoardObj], this.transform);
+                BoardObject = Instantiate(BoardObjects[iBoardObj], PuzzlesParent.transform);
                 BoardObject.SetActive(true);
                 return BoardObject.GetComponent<Board>();
             }
@@ -131,6 +136,23 @@ public class PuzzlePageManager : Page
 
     public void HidePuzzle()
     {
-        BoardObject?.SetActive(false);
+        PuzzlesParent?.SetActive(false);
+    }
+
+    public void ShowLevelEndMessage(bool won)
+    {
+        CongratsMessage.SetActive(won);
+        OhNoMessage.SetActive(!won);
+    }
+
+    public void ResetButtonClick()
+    {
+        ActivateBoard(CurrentBoard.MyType);
+    }
+
+    public void BackButtonClick()
+    {
+        HidePuzzle();
+        ManagersSingleton.Managers.PageTurner.GoToPage(Pages.MainMenu);
     }
 }

@@ -100,7 +100,7 @@ public class Board : MonoBehaviour
 
         if (ManagersSingleton.Managers.PuzzlePageManager.LivesHandler.ReduceALife())
         {
-            PlayerLost();
+            StartCoroutine(PlayerLost());
         }
     }
 
@@ -113,14 +113,24 @@ public class Board : MonoBehaviour
 
     }
 
-    private void PlayerLost()
+    private IEnumerator PlayerLost()
     {
+        ManagersSingleton.Managers.PageTurner.GoToPage(Pages.LevelFailed);
+
+        ManagersSingleton.Managers.PuzzlePageManager.ShowLevelEndMessage(false);
+        yield return new WaitForSeconds(0.1f);
+        if (OnPuzzleFinished != null)
+        {
+            OnPuzzleFinished();
+        }
+        yield return new WaitForSeconds(0.1f);
         ManagersSingleton.Managers.PageTurner.GoToPage(Pages.LevelFailed);
     }
 
     private IEnumerator PlayerWon()
     {
         ManagersSingleton.Managers.Profile.SavePlayedPuzzle(MyType, MyIndexInDB);
+        ManagersSingleton.Managers.PuzzlePageManager.ShowLevelEndMessage(true);
         yield return new WaitForSeconds(0.1f);
         if (OnPuzzleFinished != null)
         {

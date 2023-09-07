@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        ManagersSingleton.Managers.PuzzlePageManager.HidePuzzle();
         StartCoroutine(DoCreateLevelIcons());
         ManagersSingleton.Managers.PageTurner.GoToPage(Pages.MainMenu);
     }

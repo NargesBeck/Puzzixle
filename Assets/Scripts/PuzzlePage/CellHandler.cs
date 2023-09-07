@@ -1,8 +1,8 @@
-﻿using DG.Tweening;
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.EventSystems;
 
-public class CellHandler : MonoBehaviour
+public class CellHandler : MonoBehaviour, IPointerClickHandler
 {
     private SpriteRenderer spriteRenderer;
     private SpriteRenderer SpriteRenderer
@@ -99,5 +99,10 @@ public class CellHandler : MonoBehaviour
         MyMode = CellModes.MarkedAsEmpty;
         Animator.Play(toEmptyClip.name);
         StartCoroutine(ChangeSpriteOnChangeModeAnimationDone(0.5f));
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        OnLevelIconClick();
     }
 }
