@@ -8,7 +8,7 @@ public class PuzzlePageManager : Page
     public LivesHandler LivesHandler;
 
     [SerializeField]
-    private GameObject CongratsMessage, OhNoMessage, PuzzlesParent;
+    private GameObject CongratsMessage, OhNoMessage;
     [SerializeField]
     private HintHandler HintHandler;
     [SerializeField]
@@ -83,13 +83,12 @@ public class PuzzlePageManager : Page
 
     private Board ActivateBoard(BoardTypes type)
     {
-        PuzzlesParent.SetActive(true);
         Destroy(BoardObject);
         for (int iBoardObj = 0; iBoardObj < BoardObjects.Count; iBoardObj++)
         {
             if (BoardObjects[iBoardObj].GetComponent<Board>().MyType == type)
             {
-                BoardObject = Instantiate(BoardObjects[iBoardObj], PuzzlesParent.transform);
+                BoardObject = Instantiate(BoardObjects[iBoardObj], this.transform);
                 BoardObject.SetActive(true);
                 return BoardObject.GetComponent<Board>();
             }
@@ -134,11 +133,6 @@ public class PuzzlePageManager : Page
         return DB.PuzzlesPool.Find(x => x.BoardType == boardType).PuzzlesList.Count;
     }
 
-    public void HidePuzzle()
-    {
-        PuzzlesParent?.SetActive(false);
-    }
-
     public void ShowLevelEndMessage(bool won)
     {
         CongratsMessage.SetActive(won);
@@ -152,7 +146,6 @@ public class PuzzlePageManager : Page
 
     public void BackButtonClick()
     {
-        HidePuzzle();
         ManagersSingleton.Managers.PageTurner.GoToPage(Pages.MainMenu);
     }
 }

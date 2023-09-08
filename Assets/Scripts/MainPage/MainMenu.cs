@@ -9,8 +9,6 @@ public class MainMenu : Page
 
     public override void PreparePage()
     {
-        ManagersSingleton.Managers.PuzzlePageManager.HidePuzzle();
-
         PlayButton.onClick.RemoveAllListeners();
         PlayButton.onClick.AddListener(PlayButtonClick);
 

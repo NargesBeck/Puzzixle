@@ -1,23 +1,24 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.EventSystems;
 
 public class CellHandler : MonoBehaviour, IPointerClickHandler
 {
-    private SpriteRenderer spriteRenderer;
-    private SpriteRenderer SpriteRenderer
+    private Image image;
+    private Image Image
     {
         get
         {
-            if (spriteRenderer == null)
+            if (image == null)
             {
-                spriteRenderer = GetComponent<SpriteRenderer>();
+                image = GetComponent<Image>();
             }
-            return spriteRenderer;
+            return image;
         }
         set
         {
-            spriteRenderer = value;
+            image = value;
         }
     }
 
@@ -42,19 +43,19 @@ public class CellHandler : MonoBehaviour, IPointerClickHandler
     [SerializeField]
     private Sprite fullSprite;
 
-    [SerializeField]
+    //[SerializeField]
     private CellModes MyMode;
 
-    [SerializeField]
+    //[SerializeField]
     private int myRowIndex;
 
-    [SerializeField]
+    //[SerializeField]
     private int myColIndex;
 
-    private void Awake()
-    {
-        ManagersSingleton.Managers.PuzzlePageManager.CurrentBoard.OnPuzzleFinished += RevealBlank;
-    }
+    //private void Awake()
+    //{
+    //    ManagersSingleton.Managers.PuzzlePageManager.CurrentBoard.OnPuzzleFinished += RevealBlank;
+    //}
 
     private void ChangeMode(CellModes newMode)
     {
@@ -77,11 +78,11 @@ public class CellHandler : MonoBehaviour, IPointerClickHandler
         Animator.enabled = false;
         if (MyMode == CellModes.MarkedAsEmpty)
         {
-            SpriteRenderer.sprite = emptySprite;
+            Image.sprite = emptySprite;
         }
         else
         {
-            SpriteRenderer.sprite = fullSprite;
+            Image.sprite = fullSprite;
         }
     }
 
@@ -104,5 +105,12 @@ public class CellHandler : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         OnLevelIconClick();
+    }
+
+    public void Setup(int rowIndex, int colIndex)
+    {
+        ManagersSingleton.Managers.PuzzlePageManager.CurrentBoard.OnPuzzleFinished += RevealBlank;
+        myRowIndex = rowIndex;
+        myColIndex = colIndex;
     }
 }

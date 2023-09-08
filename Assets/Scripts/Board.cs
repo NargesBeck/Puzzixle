@@ -11,10 +11,15 @@ public class Board : MonoBehaviour
     public Action OnPuzzleFinished;
 
     [SerializeField]
-    List<RowColViewHandler> RowsList = new List<RowColViewHandler>();
+    private List<RowColViewHandler> RowsList = new List<RowColViewHandler>();
 
     [SerializeField]
-    List<RowColViewHandler> ColumnsList = new List<RowColViewHandler>();
+    private List<RowColViewHandler> ColumnsList = new List<RowColViewHandler>();
+
+    [SerializeField]
+    private GameObject CellsParent, CellPrefab;
+
+    private List<CellHandler> CellsList = new List<CellHandler>();
 
     public PuzzleInfo CurrentPuzzle;
 
@@ -22,6 +27,8 @@ public class Board : MonoBehaviour
 
     public void RunLevel(PuzzleInfo puzzleToApply, int index)
     {
+        CreateCells();
+
         MyIndexInDB = index;
         CurrentPuzzle = puzzleToApply;
 
@@ -37,6 +44,35 @@ public class Board : MonoBehaviour
             {
                 if (CurrentPuzzle.Map2D[row, col].CellMode == CellModes.MarkedAsFull)
                     NumOfFullCellsInPuzzle++;
+            }
+        }
+    }
+
+    private void CreateCells()
+    {
+        for (int i = 0; i < CellsList.Count; i++)
+        {
+            Destroy(CellsList[i].gameObject);
+        }
+        CellsList.Clear();
+
+        int size = 0;
+        switch(MyType)
+        {
+            case BoardTypes.Squ5: size = 5; break;
+            case BoardTypes.Squ10: size = 10; break;
+            case BoardTypes.Squ15: size = 15; break;
+        }
+
+        for (int r = 0; r < size; r++)
+        {
+            for (int c = 0; c < size; c++)
+            {
+                GameObject cellObj = Instantiate(CellPrefab, CellsParent.transform);
+                cellObj.SetActive(true);
+                CellHandler cell = cellObj.GetComponent<CellHandler>();
+                cell.Setup(r, c);
+                CellsList.Add(cell);
             }
         }
     }
