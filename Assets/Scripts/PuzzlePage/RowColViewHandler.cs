@@ -18,7 +18,7 @@ public class RowColViewHandler : MonoBehaviour
         string seperator = SequencesTextSeperator == SequencesTextSeperators.NewLine ? "\n" : " ";
         for (int i = 0; i < numbers.Count; i++)
         {
-            seqText = numbers[i].ToString();
+            seqText += numbers[i].ToString();
             if (i < numbers.Count - 1) 
                 seqText += seperator;
         }

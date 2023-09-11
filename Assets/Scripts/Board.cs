@@ -1,7 +1,8 @@
-using System.Collections.Generic;
-using System.Collections;
-using UnityEngine;
 using System;
+using UnityEngine;
+using DG.Tweening;
+using System.Collections;
+using System.Collections.Generic;
 
 public class Board : MonoBehaviour
 {
@@ -138,6 +139,8 @@ public class Board : MonoBehaviour
         {
             StartCoroutine(PlayerLost());
         }
+
+        ManagersSingleton.Managers.PuzzlePageManager.transform.DOShakePosition(0.4f, 10);
     }
 
     private void PlayerWasRight()
@@ -146,7 +149,7 @@ public class Board : MonoBehaviour
 
     private void PlayerUsedHint()
     {
-
+        ManagersSingleton.Managers.PuzzlePageManager.HintHandler.ReduceAHint();
     }
 
     private IEnumerator PlayerLost()

@@ -10,6 +10,9 @@ public class HintHandler : MonoBehaviour
     [SerializeField]
     private Sprite ActiveSprite, DefaultSprite;
 
+    [SerializeField]
+    private Text HintLeftText;
+
     private Image image;
     private Image Image
     {
@@ -39,5 +42,16 @@ public class HintHandler : MonoBehaviour
         }
     }
 
-    
+    public void ReduceAHint()
+    {
+        NumHintsLeft--;
+        HintLeftText.text = NumHintsLeft.ToString();
+    }
+
+    public void SetHintCount(int count)
+    {
+        NumHintsLeft = count;
+        Image.sprite = DefaultSprite;
+        HintLeftText.text = NumHintsLeft.ToString();
+    }
 }

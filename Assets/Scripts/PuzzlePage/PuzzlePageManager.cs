@@ -6,11 +6,10 @@ public class PuzzlePageManager : Page
 {
     public MarkCellAsMananger MarkCellAsMananger;
     public LivesHandler LivesHandler;
+    public HintHandler HintHandler;
 
     [SerializeField]
     private GameObject CongratsMessage, OhNoMessage;
-    [SerializeField]
-    private HintHandler HintHandler;
     [SerializeField]
     private List<GameObject> BoardObjects = new List<GameObject>();
     
@@ -79,6 +78,7 @@ public class PuzzlePageManager : Page
         CurrentBoard = ActivateBoard(boardType);
         PrepareLevel2DArray(boardType, ref puzzleInfo);
         LivesHandler.ResetToFull();
+        HintHandler.SetHintCount(10);
         CurrentBoard.RunLevel(puzzleInfo, index);
     }
 
@@ -142,7 +142,7 @@ public class PuzzlePageManager : Page
 
     public void ResetButtonClick()
     {
-        ActivateBoard(CurrentBoard.MyType);
+        PreparePage();
     }
 
     public void BackButtonClick()

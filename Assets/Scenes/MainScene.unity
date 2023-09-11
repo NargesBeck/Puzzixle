@@ -4593,6 +4593,7 @@ MonoBehaviour:
     type: 3}
   DefaultSprite: {fileID: 7807520165903122231, guid: 9cae8a8252c767c4385c865e4ac61943,
     type: 3}
+  HintLeftText: {fileID: 1316355619}
 --- !u!1 &774651033
 GameObject:
   m_ObjectHideFlags: 0
@@ -5983,9 +5984,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MarkCellAsMananger: {fileID: 615193073}
   LivesHandler: {fileID: 2051132449}
+  HintHandler: {fileID: 743481573}
   CongratsMessage: {fileID: 145295950}
   OhNoMessage: {fileID: 1248084141}
-  HintHandler: {fileID: 743481573}
   BoardObjects:
   - {fileID: 178146283}
   - {fileID: 646082368}
