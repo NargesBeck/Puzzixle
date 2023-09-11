@@ -79,6 +79,7 @@ public class PuzzlePageManager : Page
         PrepareLevel2DArray(boardType, ref puzzleInfo);
         LivesHandler.ResetToFull();
         HintHandler.SetHintCount(10);
+        MarkCellAsMananger.ResetToDefault();
         CurrentBoard.RunLevel(puzzleInfo, index);
     }
 

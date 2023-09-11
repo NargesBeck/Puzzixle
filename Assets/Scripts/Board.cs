@@ -154,15 +154,10 @@ public class Board : MonoBehaviour
 
     private IEnumerator PlayerLost()
     {
-        ManagersSingleton.Managers.PageTurner.GoToPage(Pages.LevelFailed);
-
         ManagersSingleton.Managers.PuzzlePageManager.ShowLevelEndMessage(false);
-        yield return new WaitForSeconds(0.2f);
-        if (OnPuzzleFinished != null)
-        {
-            OnPuzzleFinished();
-        }
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.25f);
+        OnPuzzleFinished?.Invoke();
+        yield return new WaitForSeconds(1.25f);
         ManagersSingleton.Managers.PageTurner.GoToPage(Pages.LevelFailed);
     }
 
@@ -170,12 +165,9 @@ public class Board : MonoBehaviour
     {
         ManagersSingleton.Managers.Profile.SavePlayedPuzzle(MyType, MyIndexInDB);
         ManagersSingleton.Managers.PuzzlePageManager.ShowLevelEndMessage(true);
-        yield return new WaitForSeconds(0.1f);
-        if (OnPuzzleFinished != null)
-        {
-            OnPuzzleFinished();
-        }
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.25f);
+        OnPuzzleFinished?.Invoke();
+        yield return new WaitForSeconds(1.25f);
         ManagersSingleton.Managers.PageTurner.GoToPage(Pages.LevelWon);
     }
 

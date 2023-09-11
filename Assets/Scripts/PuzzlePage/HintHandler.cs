@@ -29,23 +29,34 @@ public class HintHandler : MonoBehaviour
         if (HintIsActive)
         {
             HintIsActive = false;
-            Image.DOFade(0, 0);
+            //Image.DOFade(0, 0);
             Image.sprite = DefaultSprite;
-            Image.DOFade(1, 0.25f);
+            //Image.DOFade(1, 0.25f);
         }
         else if (NumHintsLeft > 0)
         {
             HintIsActive = true;
-            Image.DOFade(0, 0);
+            //Image.DOFade(0, 0);
             Image.sprite = ActiveSprite;
-            Image.DOFade(1, 0.25f);
+            //Image.DOFade(1, 0.25f);
         }
     }
 
     public void ReduceAHint()
     {
         NumHintsLeft--;
-        HintLeftText.text = NumHintsLeft.ToString();
+        if (NumHintsLeft < 1)
+        {
+            NumHintsLeft = 0;
+            HintLeftText.text = NumHintsLeft.ToString();
+
+            HintIsActive = false;
+            Image.sprite = DefaultSprite;
+        }
+        else
+        {
+            HintLeftText.text = NumHintsLeft.ToString();
+        }   
     }
 
     public void SetHintCount(int count)
