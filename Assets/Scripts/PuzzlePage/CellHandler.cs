@@ -5,77 +5,41 @@ using UnityEngine.EventSystems;
 
 public class CellHandler : MonoBehaviour, IPointerClickHandler
 {
-    private Image image;
-    private Image Image
-    {
-        get
-        {
-            if (image == null)
-            {
-                image = GetComponent<Image>();
-            }
-            return image;
-        }
-        set
-        {
-            image = value;
-        }
-    }
-
-    private Animator animator;
-    private Animator Animator
-    {
-        get
-        {
-            if (animator == null)
-                animator = GetComponent<Animator>();
-            return animator;
-        }
-    }
-
     [SerializeField]
-    private AnimationClip toEmptyClip;
+    private Image Image;
+    
     [SerializeField]
-    private AnimationClip toFullClip;
+    private UIAnimator animator;
 
     [SerializeField]
     private Sprite emptySprite;
     [SerializeField]
     private Sprite fullSprite;
 
-    //[SerializeField]
     private CellModes MyMode;
 
-    //[SerializeField]
     private int myRowIndex;
 
-    //[SerializeField]
     private int myColIndex;
-
-    //private void Awake()
-    //{
-    //    ManagersSingleton.Managers.PuzzlePageManager.CurrentBoard.OnPuzzleFinished += RevealBlank;
-    //}
 
     private void ChangeMode(CellModes newMode)
     {
         MyMode = newMode;
-
+        float duration = 0;
         if (newMode == CellModes.MarkedAsEmpty)
         {
-            Animator.Play(toEmptyClip.name);
+            duration = animator.PlayAnimation("empty");
         }
         else
         {
-            Animator.Play(toFullClip.name);
+            duration = animator.PlayAnimation("full");
         }
-        StartCoroutine(ChangeSpriteOnChangeModeAnimationDone(0.5f));
+        StartCoroutine(ChangeSpriteOnChangeModeAnimationDone(duration));
     }
 
     private IEnumerator ChangeSpriteOnChangeModeAnimationDone(float duration)
     {
         yield return new WaitForSeconds(duration);
-        Animator.enabled = false;
         if (MyMode == CellModes.MarkedAsEmpty)
         {
             Image.sprite = emptySprite;
@@ -98,7 +62,7 @@ public class CellHandler : MonoBehaviour, IPointerClickHandler
         if (MyMode != CellModes.NA)
             return;
         MyMode = CellModes.MarkedAsEmpty;
-        Animator.Play(toEmptyClip.name);
+        animator.PlayAnimation("empty");
         StartCoroutine(ChangeSpriteOnChangeModeAnimationDone(0.5f));
     }
 

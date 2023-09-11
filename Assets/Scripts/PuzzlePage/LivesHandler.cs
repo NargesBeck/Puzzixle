@@ -3,9 +3,9 @@ using UnityEngine.UI;
 
 public class LivesHandler : MonoBehaviour
 {
-    private const int MaxLives = 3;
+    private const int MaxLives = 5;
 
-    [HideInInspector] public int LivesRemaining = 3;
+    [HideInInspector] public int LivesRemaining = 5;
 
     private Slider slider;
     private Slider Slider
@@ -29,12 +29,22 @@ public class LivesHandler : MonoBehaviour
         if (LivesRemaining == 1)
             return true;
         LivesRemaining--;
-        Slider.value = (float)LivesRemaining / MaxLives;
         return false;
+    }
+
+    public void ResetToFull()
+    {
+        Slider.value = 1;
+        LivesRemaining = MaxLives;
     }
 
     public void ResetLivesRemaining()
     {
         LivesRemaining = MaxLives;
+    }
+
+    private void Update()
+    {
+        Slider.value = Mathf.Lerp(Slider.value, (float) LivesRemaining / MaxLives, Time.deltaTime);
     }
 }
