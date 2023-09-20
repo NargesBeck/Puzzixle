@@ -1,7 +1,7 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class TutorialsManager : MonoBehaviour
 {
@@ -37,12 +37,13 @@ public class TutorialsManager : MonoBehaviour
             case 2: ShowStepTwo(); break;
             case 7: ShowStepSeven(); break;
             case 9: ShowStepNine(); break;
+            case 10: ShowStepTen(); break;
         }
     }
 
     public void ShowTutorials()
     {
-        CurrentStepIndex = -1;
+        CurrentStepIndex = 8;
         GoNextStep();
     }
 
@@ -133,7 +134,7 @@ public class TutorialsManager : MonoBehaviour
         if (!StepFourFilled.Contains(col))
         {
             StepFourFilled.Add(col);
-            if (StepFourFilled.Count == 4)
+            if (StepFourFilled.Count == 3)
                 Invoke("GoNextStep", 0.6f);
         }
     }
@@ -229,7 +230,19 @@ public class TutorialsManager : MonoBehaviour
 
     private void ShowStepTen()
     {
-        StepTenButton.onClick.AddListener(GoNextStep);
+        StepTenButton.onClick.AddListener(TutorialCompleted);
+    }
+
+    private void TutorialCompleted()
+    {
+        string json = PlayerPrefs.GetString("PROFILE_JSON_PLAYERREF_KEY", null);
+        var userProfileData = JsonUtility.FromJson<UserProfileModel>(json);
+        userProfileData.CompletedTutorial = true;
+
+        json = JsonUtility.ToJson(userProfileData);
+        PlayerPrefs.SetString("PROFILE_JSON_PLAYERREF_KEY", json);
+
+        SceneManager.LoadScene(0);
     }
     #endregion
 }

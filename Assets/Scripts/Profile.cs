@@ -109,6 +109,7 @@ public class UserProgressForEachBoard
 [Serializable]
 public class UserProfileModel
 {
+    public bool CompletedTutorial;
     public BoardTypes RecentBoardType;
     public List<UserProgressForEachBoard> ProgressForEachBoards = new List<UserProgressForEachBoard>();
 }

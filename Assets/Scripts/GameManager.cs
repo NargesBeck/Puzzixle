@@ -1,14 +1,23 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public Action OnLifeLoss;
     public Action OnAppOpen;
 
+    private enum Scenes { Main = 0, Tutorials = 1}
+
     private void Start()
     {
+        //ManagersSingleton.Managers.Profile.ResetPlayerProgress();
+        if (CheckTutorials())
+        {
+            SceneManager.LoadScene(1);
+            return;
+        }
         StartCoroutine(DoCreateLevelIcons());
         ManagersSingleton.Managers.PageTurner.GoToPage(Pages.MainMenu);
     }
@@ -29,5 +38,11 @@ public class GameManager : MonoBehaviour
             if (i % 100 == 0)
                 yield return null;
         }
+    }
+
+    // return true if should show tutorials
+    private bool CheckTutorials()
+    {
+        return !ManagersSingleton.Managers.Profile.UserProfileData.CompletedTutorial;
     }
 }
