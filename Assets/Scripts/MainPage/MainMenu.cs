@@ -14,6 +14,13 @@ public class MainMenu : Page
 
         LevelsButton.onClick.RemoveAllListeners();
         LevelsButton.onClick.AddListener(LevelsButtonClick);
+
+        //RectTransform play = PlayButton.GetComponent<RectTransform>();
+        //CrunchUI.CrunchMoveX(play, -700, 0, 3, 10);
+
+        PlayButton.gameObject.SetActive(true);
+        SettingsButton.gameObject.SetActive(false);
+        LevelsButton.gameObject.SetActive(true);
     }
 
     private void PlayButtonClick()

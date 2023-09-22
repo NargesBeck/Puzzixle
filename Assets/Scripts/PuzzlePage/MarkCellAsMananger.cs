@@ -26,8 +26,8 @@ public class MarkCellAsMananger : MonoBehaviour
     {
         Mark = CellModes.MarkedAsFull;
         ToggleImage.sprite = Full;
-        EmptyImageTransform.localScale = Vector3.one;
-        FullImageTransform.localScale = new Vector3(2, 2, 2);
+        //EmptyImageTransform.localScale = Vector3.one;
+        //FullImageTransform.localScale = new Vector3(2, 2, 2);
     }
 
     public void OnToggleClick()
@@ -46,8 +46,8 @@ public class MarkCellAsMananger : MonoBehaviour
             Mark = CellModes.MarkedAsFull;
             ToggleImage.sprite = Full;
 
-            EmptyImageTransform.DOScale(Vector3.one, 0.2f);
-            FullImageTransform.DOScale(new Vector3(2, 2, 2), 0.4f);
+            //EmptyImageTransform.DOScale(Vector3.one, 0.2f);
+            //FullImageTransform.DOScale(new Vector3(2, 2, 2), 0.4f);
         }
         else
         {
@@ -55,8 +55,8 @@ public class MarkCellAsMananger : MonoBehaviour
             Mark = CellModes.MarkedAsEmpty;
             ToggleImage.sprite = Empty;
 
-            FullImageTransform.DOScale(Vector3.one, 0.2f);
-            EmptyImageTransform.DOScale(new Vector3(2, 2, 2), 0.4f);
+            //FullImageTransform.DOScale(Vector3.one, 0.2f);
+            //EmptyImageTransform.DOScale(new Vector3(2, 2, 2), 0.4f);
         }
     }
 }

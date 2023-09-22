@@ -107,6 +107,9 @@ TextureImporter:
   - first:
       213: -5373022593156826159
     second: decor
+  - first:
+      213: -7332743157772754825
+    second: gradient
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -942,7 +945,7 @@ TextureImporter:
         width: 99
         height: 50
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -950,6 +953,27 @@ TextureImporter:
       bones: []
       spriteID: 1db3db44b603f65b0800000000000000
       internalID: -5373022593156826159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gradient
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 167
+        width: 1
+        height: 2
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77067c3d2fcdc3a90800000000000000
+      internalID: -7332743157772754825
       vertices: []
       indices: 
       edges: []

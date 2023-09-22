@@ -8,6 +8,7 @@ public class TutorialCellHandler : MonoBehaviour
     [SerializeField] private GameObject Glow;
     [SerializeField] private bool MarkAsFull;
     [SerializeField] private bool IsGlowing;
+    private bool AlreadyClicked;
 
     private void OnEnable()
     {
@@ -16,6 +17,8 @@ public class TutorialCellHandler : MonoBehaviour
 
     public void Click()
     {
+        if (AlreadyClicked) return;
+        AlreadyClicked = true;
         FindObjectOfType<TutorialsManager>().CellClick(Row, Col, Step);
         GetComponent<UIAnimator>().PlayAnimation(MarkAsFull ? "full" : "empty");
     }

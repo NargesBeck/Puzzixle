@@ -12,7 +12,9 @@ public class PuzzlePageManager : Page
     private GameObject CongratsMessage, OhNoMessage;
     [SerializeField]
     private List<GameObject> BoardObjects = new List<GameObject>();
-    
+    [SerializeField]
+    private GameObject PuzzleParent;
+
     private GameObject BoardObject;
     public Board CurrentBoard;
 
@@ -90,7 +92,7 @@ public class PuzzlePageManager : Page
         {
             if (BoardObjects[iBoardObj].GetComponent<Board>().MyType == type)
             {
-                BoardObject = Instantiate(BoardObjects[iBoardObj], this.transform);
+                BoardObject = Instantiate(BoardObjects[iBoardObj], PuzzleParent.transform);
                 BoardObject.SetActive(true);
                 return BoardObject.GetComponent<Board>();
             }

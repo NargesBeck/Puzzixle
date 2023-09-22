@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class PuzzleGenerator : MonoBehaviour
 {
+    private int MaxSequencesInRowOrColumns = 3 * 2 - 1; // 3 full sequences, with 2 empty sequences between them
     public void Generate(ref PuzzleInfo puzzle, int size)
     {
         int index = 0;
@@ -39,11 +40,11 @@ public class PuzzleGenerator : MonoBehaviour
         bool[] row = new bool[size];
         int lastSeqEndedAt = 0, seqLength;
         bool seqValue = RandomBool();
-        // worst case scenario, we have 10 sequences for a row[10]
-        for (int i = 0; i < size; i++)
+        for (int i = 0; i < MaxSequencesInRowOrColumns; i++)
         {
             seqLength = Random.Range(1, size - lastSeqEndedAt + 1);
             seqValue = !seqValue;
+            
             for (int iRow = lastSeqEndedAt; iRow < lastSeqEndedAt + seqLength; iRow++)
             {
                 if (iRow >= size)

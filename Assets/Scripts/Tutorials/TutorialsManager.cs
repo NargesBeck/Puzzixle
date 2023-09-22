@@ -43,7 +43,7 @@ public class TutorialsManager : MonoBehaviour
 
     public void ShowTutorials()
     {
-        CurrentStepIndex = 8;
+        CurrentStepIndex = -1;
         GoNextStep();
     }
 

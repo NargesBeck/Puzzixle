@@ -19,9 +19,11 @@ public class RowColViewHandler : MonoBehaviour
         for (int i = 0; i < numbers.Count; i++)
         {
             seqText += numbers[i].ToString();
-            if (i < numbers.Count - 1) 
+            if (i < numbers.Count - 1)
                 seqText += seperator;
         }
+        if (seqText.Equals(string.Empty))
+            seqText = "0";
         SequencesText.text = seqText;
     }
 }
